@@ -1,0 +1,334 @@
+---
+/**
+ * お問い合わせページ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
+---
+
+<BaseLayout
+  title="お問い合わせ | 株式会社後藤 福祉事業部 つなぐ"
+  description="福祉用具のレンタル・販売・住宅改修のご相談はお気軽にお問い合わせください。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Contact</span>
+        <h1 class="page-title">お問い合わせ</h1>
+        <p class="page-desc">
+          ご質問・ご相談など、<br />
+          お気軽にお問い合わせください。
+        </p>
+      </div>
+    </div>
+
+    <!-- 電話案内 -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="tel-box">
+          <p class="tel-label">お急ぎの方はお電話ください</p>
+          <a href="tel:0766-50-1555" class="tel-number">0766-50-1555</a>
+          <p class="tel-hours">受付時間：月〜金 8:30〜17:30（土日祝休み）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- フォーム -->
+    <section class="section bg-white">
+      <div class="container narrow">
+        <span class="section-label">Form</span>
+        <h2 class="section-title">フォームでのお問い合わせ</h2>
+        <p class="section-subtitle">通常2営業日以内にご返信いたします</p>
+
+        <form action={formAction} method="post" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name" class="form-label">
+              お名前
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="例：後藤 太郎"
+              class="form-input"
+            />
+            <p class="form-error" data-error="name">お名前を入力してください</p>
+          </div>
+
+          <div class="form-group">
+            <label for="kana" class="form-label">
+              フリガナ
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="text"
+              id="kana"
+              name="kana"
+              required
+              placeholder="例：ゴトウ タロウ"
+              class="form-input"
+            />
+            <p class="form-error" data-error="kana">フリガナを入力してください</p>
+          </div>
+
+          <div class="form-group">
+            <label for="tel" class="form-label">
+              電話番号
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="tel"
+              id="tel"
+              name="tel"
+              required
+              placeholder="例：0766-50-1555"
+              class="form-input"
+            />
+            <p class="form-error" data-error="tel">電話番号を入力してください</p>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">
+              メールアドレス
+              <span class="required">必須</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="例：example@mail.com"
+              class="form-input"
+            />
+            <p class="form-error" data-error="email">正しいメールアドレスを入力してください</p>
+          </div>
+
+          <div class="form-group">
+            <label for="category" class="form-label">
+              お問い合わせ種別
+              <span class="required">必須</span>
+            </label>
+            <select id="category" name="category" required class="form-select">
+              <option value="" disabled selected>選択してください</option>
+              <option value="レンタル">レンタル</option>
+              <option value="販売">販売</option>
+              <option value="住宅改修">住宅改修</option>
+              <option value="オンラインサポート">オンラインサポート</option>
+              <option value="採用について">採用について</option>
+              <option value="その他">その他</option>
+            </select>
+            <p class="form-error" data-error="category">種別を選択してください</p>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">
+              お問い合わせ内容
+              <span class="required">必須</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="6"
+              placeholder="お気軽にご記入ください"
+              class="form-textarea"
+            ></textarea>
+            <p class="form-error" data-error="message">お問い合わせ内容を入力してください</p>
+          </div>
+
+          <div class="form-privacy">
+            <p>
+              送信いただいた個人情報は、お問い合わせへの対応のみに使用し、
+              第三者への提供は行いません。
+            </p>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            送信する
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector('.contact-form') as HTMLFormElement;
+
+  form.addEventListener('submit', (e) => {
+    let isValid = true;
+    const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+      '[required]'
+    );
+
+    fields.forEach((field) => {
+      const errorEl = form.querySelector(`[data-error="${field.name}"]`);
+      if (!field.value.trim() || !field.checkValidity()) {
+        field.classList.add('is-invalid');
+        errorEl?.classList.add('is-visible');
+        isValid = false;
+      } else {
+        field.classList.remove('is-invalid');
+        errorEl?.classList.remove('is-visible');
+      }
+    });
+
+    if (!isValid) {
+      e.preventDefault();
+      const firstInvalid = form.querySelector('.is-invalid') as HTMLElement;
+      firstInvalid?.focus();
+    }
+  });
+
+  // リアルタイムバリデーション（入力後）
+  form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
+    '[required]'
+  ).forEach((field) => {
+    field.addEventListener('blur', () => {
+      const errorEl = form.querySelector(`[data-error="${field.name}"]`);
+      if (!field.value.trim() || !field.checkValidity()) {
+        field.classList.add('is-invalid');
+        errorEl?.classList.add('is-visible');
+      } else {
+        field.classList.remove('is-invalid');
+        errorEl?.classList.remove('is-visible');
+      }
+    });
+  });
+</script>
+
+<style>
+  .page-header { padding: 120px 32px 56px; background: var(--color-primary); }
+  .page-title { font-family: var(--font-serif); font-size: clamp(30px, 4vw, 48px); color: white; margin-bottom: 8px; }
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.8; }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .bg-white { background: white; }
+  .narrow { max-width: 700px; margin: 0 auto; }
+
+  /* 電話案内 */
+  .tel-box {
+    text-align: center;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    padding: 32px;
+  }
+  .tel-label { font-size: 14px; color: var(--color-text-mid); margin-bottom: 8px; }
+  .tel-number {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 36px);
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .tel-hours { font-size: 12px; color: var(--color-text-lt); margin-top: 8px; }
+
+  /* フォーム */
+  .contact-form { margin-top: 8px; }
+
+  .form-group { margin-bottom: 28px; }
+
+  .form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .required {
+    font-size: 11px;
+    color: white;
+    background: #c0392b;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.12);
+  }
+  .form-input.is-invalid,
+  .form-select.is-invalid,
+  .form-textarea.is-invalid {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.08);
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='%23666' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .form-textarea { resize: vertical; min-height: 140px; }
+
+  .form-error {
+    display: none;
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 6px;
+  }
+  .form-error.is-visible { display: block; }
+
+  .form-privacy {
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .form-privacy p { font-size: 12px; color: var(--color-text-lt); line-height: 1.8; }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-accent);
+    color: white;
+    padding: 16px 48px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-base);
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-submit:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .tel-box { padding: 24px 16px; }
+  }
+</style>

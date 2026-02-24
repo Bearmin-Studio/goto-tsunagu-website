@@ -1,0 +1,94 @@
+---
+/**
+ * お問い合わせ送信完了ページ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="送信完了 | 株式会社後藤 福祉事業部 つなぐ"
+  description="お問い合わせありがとうございます。"
+>
+  <main>
+    <div class="thanks-page">
+      <div class="container">
+        <div class="thanks-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg>
+        </div>
+        <h1>送信が完了しました</h1>
+        <p>
+          お問い合わせいただきありがとうございます。<br />
+          通常2営業日以内にご返信いたします。
+        </p>
+        <p class="sub-text">
+          しばらく経っても返信がない場合は、<br />
+          お手数ですがお電話にてお問い合わせください。
+        </p>
+        <a href="/" class="btn-back">
+          トップページへ戻る
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .thanks-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 32px 80px;
+  }
+  .thanks-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--color-accent-lt);
+    color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  h1 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 8px;
+  }
+  .sub-text {
+    font-size: 13px;
+    color: var(--color-text-lt);
+    margin-bottom: 32px;
+  }
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary);
+    color: white;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+  }
+  .btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 32, 96, 0.3);
+  }
+</style>
