@@ -1,0 +1,148 @@
+---
+/**
+ * 代表メッセージセクション
+ */
+---
+
+<section class="section staff-section">
+  <div class="container">
+    <div class="staff-grid">
+      <div class="staff-img-wrap fade-up">
+        <img
+          src="https://goto-t.co.jp/wp-content/uploads/2020/11/DSC1763.png"
+          alt="代表取締役 後藤純"
+          loading="lazy"
+          width="400"
+          height="500"
+        />
+        <div class="staff-quote">
+          笑顔をつなげる<br />ありがとうをつなげる
+        </div>
+      </div>
+      <div class="staff-info fade-up">
+        <span class="section-label">Message</span>
+        <h2 class="section-title">"つなぐ"に込めた想い</h2>
+        <p class="staff-name">代表取締役　後藤　純</p>
+        <p class="staff-message">
+          株式会社後藤は2020年に創業いたしました。
+          高齢化社会が進む中、介護を必要とされるお客様の生活を支えるためには
+          周りのご家族様、福祉・医療関係者様との連携が不可欠と強く感じております。
+        </p>
+        <p class="staff-message">
+          住み慣れたご自宅で、大切なご家族と過ごす時間を支えるために。
+          お客様一人ひとりの想いを丁寧に"つなぐ"サービスを心がけてまいります。
+        </p>
+        <a href="/about" class="btn-about">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+          </svg>
+          会社について詳しく見る
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .staff-section { background: var(--color-bg2); }
+
+  .staff-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .staff-img-wrap {
+    position: relative;
+  }
+
+  .staff-img-wrap img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .staff-quote {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: var(--color-primary);
+    color: white;
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-serif-jp);
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+    max-width: 200px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .staff-quote::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    margin-bottom: 10px;
+  }
+
+  .staff-info { padding: 20px 0; }
+
+  .staff-name {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-text-lt);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .staff-message {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 2.0;
+    margin-bottom: 20px;
+  }
+
+  .btn-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 15px 30px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    transition: var(--transition-base);
+    margin-top: 12px;
+  }
+
+  .btn-about:hover {
+    background: rgba(0, 32, 96, 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .staff-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .staff-img-wrap {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .staff-quote {
+      bottom: -16px;
+      right: -8px;
+      font-size: 13px;
+      padding: 16px 20px;
+    }
+  }
+</style>

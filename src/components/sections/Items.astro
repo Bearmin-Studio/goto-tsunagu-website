@@ -1,0 +1,150 @@
+---
+/**
+ * レンタル用具カテゴリ グリッドセクション
+ */
+
+interface ItemCategory {
+  href: string;
+  imgSrc: string;
+  imgAlt: string;
+  name: string;
+}
+
+const items: ItemCategory[] = [
+  { href: '/rental/wheelchair', imgSrc: 'https://goto-t.co.jp/images/cat1.png', imgAlt: '車いす', name: '車いす・付属品' },
+  { href: '/rental/bed', imgSrc: 'https://goto-t.co.jp/images/cat2.png', imgAlt: '特殊寝台', name: '特殊寝台・付属品' },
+  { href: '/rental/bedsore', imgSrc: 'https://goto-t.co.jp/images/cat3.png', imgAlt: '床ずれ防止', name: '床ずれ防止・体位変換器' },
+  { href: '/rental/sensor', imgSrc: 'https://goto-t.co.jp/images/cat4.png', imgAlt: '徘徊感知機器', name: '徘徊感知機器' },
+  { href: '/rental/lift', imgSrc: 'https://goto-t.co.jp/images/cat5.png', imgAlt: '移動用リフト', name: '移動用リフト' },
+  { href: '/rental/handrail', imgSrc: 'https://goto-t.co.jp/images/cat6.png', imgAlt: '手すり', name: '手すり' },
+  { href: '/rental/slope', imgSrc: 'https://goto-t.co.jp/images/cat7.png', imgAlt: 'スロープ', name: 'スロープ' },
+  { href: '/rental/walker', imgSrc: 'https://goto-t.co.jp/images/cat8.png', imgAlt: '歩行器', name: '歩行器・補助杖' },
+  { href: '/rental/excretion', imgSrc: 'https://goto-t.co.jp/images/cat9.png', imgAlt: '自動排泄処理装置', name: '自動排泄処理装置' },
+];
+---
+
+<section class="section items-section">
+  <div class="container">
+    <div class="items-header">
+      <div>
+        <span class="section-label">Rental Items</span>
+        <h2 class="items-title">レンタル用具カテゴリ</h2>
+      </div>
+      <a href="/rental" class="btn-see-all">
+        すべて見る
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="items-grid">
+      {items.map((item) => (
+        <a href={item.href} class="item-card fade-up">
+          <img src={item.imgSrc} alt={item.imgAlt} class="item-cat-img" loading="lazy" />
+          <p class="item-card-name">{item.name}</p>
+        </a>
+      ))}
+      <a href="/rental" class="item-card more fade-up">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        </svg>
+        <p class="item-card-name">すべての用具を見る</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .items-section { background: var(--color-bg2); }
+
+  .items-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+  }
+
+  .items-title {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+
+  .item-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 24px 14px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-base);
+    cursor: pointer;
+  }
+
+  .item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+  }
+
+  .item-cat-img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    margin: 0 auto 14px;
+  }
+
+  .item-card-name {
+    font-size: 12px;
+    color: var(--color-text-mid);
+    line-height: 1.5;
+  }
+
+  .item-card.more {
+    background: var(--color-primary);
+    border-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .item-card.more .item-card-name {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-see-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .btn-see-all:hover { background: rgba(0, 32, 96, 0.05); }
+
+  /* === Responsive === */
+  @media (max-width: 1024px) {
+    .items-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .items-grid { grid-template-columns: repeat(2, 1fr); }
+    .items-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>

@@ -1,0 +1,156 @@
+---
+/**
+ * ご利用の流れセクション（4ステップ）
+ */
+
+interface FlowStep {
+  num: number;
+  title: string;
+  desc: string;
+  iconPath: string;
+}
+
+const steps: FlowStep[] = [
+  {
+    num: 1,
+    title: 'ご相談・お問い合わせ',
+    desc: 'お電話・メール・オンラインでお気軽にご相談ください。相談・見積り無料です。',
+    iconPath: 'M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z',
+  },
+  {
+    num: 2,
+    title: '訪問・ご提案',
+    desc: '専門相談員が訪問し、お体の状態・生活環境に合った用具をご提案します。',
+    iconPath: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+  },
+  {
+    num: 3,
+    title: '介護保険申請サポート',
+    desc: 'ケアマネジャー様と連携し、各種申請手続きをサポートいたします。',
+    iconPath: 'M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z',
+  },
+  {
+    num: 4,
+    title: '納品・アフターフォロー',
+    desc: 'ご自宅に設置後も定期的にフォローアップ。安心してお使いいただけます。',
+    iconPath: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+  },
+];
+---
+
+<section class="section flow-section">
+  <div class="flow-bg-text" aria-hidden="true">FLOW</div>
+  <div class="container">
+    <span class="section-label">How to Use</span>
+    <h2 class="section-title">ご利用までの流れ</h2>
+    <p class="section-subtitle">4つのステップでスタートできます</p>
+
+    <div class="flow-steps">
+      <div class="flow-connector" aria-hidden="true"></div>
+      {steps.map((step) => (
+        <div class="flow-step">
+          <div class="flow-step-num">{step.num}</div>
+          <svg class="flow-step-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={step.iconPath} />
+          </svg>
+          <h3 class="flow-step-title" set:html={step.title.replace('・', '・<br />')} />
+          <p class="flow-step-desc">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow-section {
+    background: var(--color-primary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flow-bg-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-serif);
+    font-size: 180px;
+    color: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+  }
+
+  .flow-section :global(.section-label) { color: var(--color-accent); }
+  .flow-section :global(.section-title) { color: white; }
+  .flow-section :global(.section-subtitle) { color: rgba(255, 255, 255, 0.55); }
+
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .flow-connector {
+    position: absolute;
+    top: 35px;
+    left: calc(12.5% + 8px);
+    right: calc(12.5% + 8px);
+    height: 1px;
+    background: linear-gradient(to right, rgba(74, 144, 217, 0.6), rgba(74, 144, 217, 0.15));
+  }
+
+  .flow-step {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .flow-step-num {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: white;
+    font-family: var(--font-serif);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    box-shadow: 0 4px 16px rgba(74, 144, 217, 0.4);
+  }
+
+  .flow-step-icon {
+    width: 32px; height: 32px;
+    margin: 0 auto 12px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .flow-step-title {
+    font-family: var(--font-serif-jp);
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+
+  .flow-step-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.8;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .flow-steps { grid-template-columns: repeat(2, 1fr); gap: 40px 0; }
+    .flow-connector { display: none; }
+    .flow-bg-text { font-size: 100px; }
+  }
+
+  @media (max-width: 480px) {
+    .flow-steps { grid-template-columns: 1fr; }
+  }
+</style>

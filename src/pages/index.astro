@@ -1,10 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import IntroBanner from '../components/sections/IntroBanner.astro';
+import Services from '../components/sections/Services.astro';
+import Items from '../components/sections/Items.astro';
+import Why from '../components/sections/Why.astro';
+import Flow from '../components/sections/Flow.astro';
+import Staff from '../components/sections/Staff.astro';
+import News from '../components/sections/News.astro';
+import Area from '../components/sections/Area.astro';
+import Cta from '../components/sections/Cta.astro';
 ---
 
 <BaseLayout title="株式会社後藤 福祉事業部 つなぐ | 福祉用具レンタル・販売・住宅改修">
   <main>
-    <h1>つなぐ</h1>
-    <p>M1セットアップ完了 - M2以降でコンポーネントを実装します</p>
+    <Hero />
+    <IntroBanner />
+    <Services />
+    <Items />
+    <Why />
+    <Flow />
+    <Staff />
+    <News />
+    <Area />
+    <Cta />
   </main>
 </BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+</script>

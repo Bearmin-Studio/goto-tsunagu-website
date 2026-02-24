@@ -1,0 +1,147 @@
+---
+/**
+ * お知らせセクション
+ * M4（microCMS連携）で動的データに置き換え予定
+ */
+
+interface NewsItem {
+  date: string;
+  category: string;
+  title: string;
+}
+
+const newsItems: NewsItem[] = [
+  { date: '2025.02.01', category: 'お知らせ', title: '2025年度 介護保険制度改正に伴うレンタル価格改定のご案内' },
+  { date: '2025.01.15', category: 'イベント', title: '福祉用具展示会・無料相談会を開催します（2月22日）' },
+  { date: '2025.01.06', category: 'お知らせ', title: '新年明けましておめでとうございます。本年もよろしくお願いいたします。' },
+  { date: '2024.12.20', category: '採用', title: '福祉用具専門相談員 スタッフ募集中（正社員・パート）' },
+  { date: '2024.11.01', category: 'お知らせ', title: 'オンラインサポートシステム（OSS）をリニューアルしました' },
+];
+---
+
+<section class="section news-section">
+  <div class="container">
+    <div class="news-layout">
+      <div class="news-sidebar">
+        <span class="section-label">News</span>
+        <h2 class="news-heading">お知らせ</h2>
+        <p class="news-sub">新着情報・イベント・<br />サービスのご案内</p>
+        <a href="/news" class="btn-see-all">
+          一覧を見る
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+          </svg>
+        </a>
+      </div>
+      <div class="news-list fade-up">
+        {newsItems.map((item) => (
+          <div class="news-item">
+            <time class="news-date">{item.date}</time>
+            <span class="news-category">{item.category}</span>
+            <p class="news-title">{item.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news-section { background: white; }
+
+  .news-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .news-sidebar { padding-top: 8px; }
+
+  .news-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.8vw, 32px);
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .news-sub {
+    font-size: 13px;
+    color: var(--color-text-lt);
+    margin-top: 8px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .btn-see-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    letter-spacing: 0.04em;
+  }
+
+  .btn-see-all:hover { background: rgba(0, 32, 96, 0.05); }
+
+  .news-list { display: flex; flex-direction: column; }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 90px 70px 1fr;
+    align-items: start;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-base);
+  }
+
+  .news-item:first-child { border-top: 1px solid var(--color-border); }
+  .news-item:hover { padding-left: 8px; }
+
+  .news-date {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--color-text-lt);
+    white-space: nowrap;
+    font-style: italic;
+    padding-top: 2px;
+  }
+
+  .news-category {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: white;
+    background: var(--color-primary);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .news-title {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.65;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .news-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .news-item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .news-item:hover { padding-left: 0; }
+
+    .news-date { font-size: 11px; }
+  }
+</style>

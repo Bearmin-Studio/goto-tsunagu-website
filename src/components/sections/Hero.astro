@@ -1,0 +1,329 @@
+---
+/**
+ * ヒーローセクション
+ * - 2カラム: テキスト左 / 画像右
+ * - フロートカード（資格バッジ）
+ * - モバイルではスタック
+ */
+---
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Welfare Equipment &amp; Home Care</span>
+    <h1 class="hero-title">
+      Tsunagu.
+      <span class="hero-title-ja">つなぐ、つながる、<br />地域と笑顔</span>
+    </h1>
+    <p class="hero-desc">
+      福祉用具のレンタル・販売・住宅改修を通じて、利用者様と介助者様が
+      自立した豊かな生活を送れるよう、専門知識を持つ
+      "福祉用具専門相談員"がサポートいたします。
+    </p>
+    <div class="hero-actions">
+      <a href="/first" class="btn-primary">
+        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+        </svg>
+        はじめての方はこちら
+      </a>
+      <a href="/contact" class="btn-outline">
+        <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+        無料相談・お問い合わせ
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img
+        src="https://goto-t.co.jp/wp-content/uploads/2021/01/smaile.png"
+        alt="笑顔でサポートする福祉用具専門相談員"
+        width="800"
+        height="600"
+        loading="eager"
+      />
+      <div class="hero-img-overlay" aria-hidden="true"></div>
+    </div>
+    <div class="hero-float-card">
+      <div class="hero-float-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" fill="#002060" />
+          <path d="M8 14c-2.67 1-4 2.5-4 4h16c0-1.5-1.33-3-4-4" fill="#002060" opacity="0.6" />
+          <path d="M16 17l1.5 3-1.5-.5-1.5.5L16 17z" fill="#4a90d9" />
+          <circle cx="16" cy="14" r="2" fill="#4a90d9" />
+        </svg>
+      </div>
+      <div class="hero-float-text">
+        <strong>福祉用具専門相談員</strong>
+        <span>相談・お見積り 無料</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 72px; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, var(--color-bg) 55%, var(--color-bg2) 100%);
+    z-index: 0;
+  }
+
+  /* === Left === */
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px 56px 72px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 4.5vw, 58px);
+    color: var(--color-primary);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title-ja {
+    display: block;
+    font-family: var(--font-serif-jp);
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 300;
+    color: var(--color-text-mid);
+    letter-spacing: 0.12em;
+    margin-top: 10px;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 2.0;
+    margin-bottom: 44px;
+    max-width: 400px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-accent-lt);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-primary);
+    color: white;
+    padding: 16px 30px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 32, 96, 0.28);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-lt);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 32, 96, 0.32);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 15px 30px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    transition: var(--transition-base);
+  }
+
+  .btn-outline:hover {
+    background: rgba(0, 32, 96, 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* === Right === */
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-img-wrap {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(245, 247, 250, 0.85) 0%,
+      rgba(245, 247, 250, 0.3) 30%,
+      transparent 60%
+    );
+  }
+
+  .hero-float-card {
+    position: absolute;
+    bottom: 48px;
+    right: 40px;
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-top: 3px solid var(--color-accent);
+    animation: floatY 5s ease-in-out infinite;
+    z-index: 3;
+  }
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-float-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hero-float-text strong {
+    display: block;
+    font-size: 14px;
+    color: var(--color-primary);
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+  }
+
+  .hero-float-text span {
+    font-size: 11px;
+    color: var(--color-text-lt);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-left {
+      padding: 96px 32px 56px;
+      text-align: center;
+      align-items: center;
+    }
+
+    .hero-left::after { display: none; }
+
+    .hero-desc {
+      border-left: none;
+      padding-left: 0;
+      max-width: 500px;
+    }
+
+    .hero-actions { justify-content: center; }
+
+    .hero-right {
+      position: relative;
+      height: 400px;
+    }
+
+    .hero-float-card {
+      bottom: 24px;
+      right: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-left { padding: 88px 16px 40px; }
+
+    .hero-right { height: 300px; }
+
+    .hero-actions { flex-direction: column; align-items: stretch; }
+
+    .btn-primary,
+    .btn-outline {
+      justify-content: center;
+    }
+
+    .hero-float-card {
+      bottom: 16px;
+      right: 16px;
+      left: 16px;
+    }
+  }
+</style>
