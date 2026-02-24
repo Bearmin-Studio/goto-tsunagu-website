@@ -77,10 +77,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="about-card-example">
                 <strong>例）</strong>車いすの場合：月額 約300〜500円（1割負担時）
               </p>
-              <a href="/rental" class="about-card-link">
-                レンタル用具を見る
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
-              </a>
             </div>
           </div>
           <div class="about-card">
@@ -98,10 +94,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p class="about-card-example">
                 <strong>例）</strong>シャワーチェア：約1,000〜3,000円（1割負担時）
               </p>
-              <a href="/sale" class="about-card-link">
-                販売品目を見る
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
-              </a>
             </div>
           </div>
         </div>
@@ -158,83 +150,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- 住宅改修について -->
+    <!-- サービス一覧 -->
     <section class="section bg-white">
       <div class="container">
-        <span class="section-label">Renovation</span>
-        <h2 class="section-title">住宅改修について</h2>
-        <p class="section-subtitle">介護保険で最大20万円まで補助されます</p>
-
-        <div class="renovation-list">
-          <div class="renovation-item">
-            <div class="renovation-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
-            </div>
-            <div>
-              <h3>対象となる工事</h3>
-              <p>手すりの取付け / 段差の解消 / 滑り防止・移動円滑化のための床材変更 / 引き戸等への扉の取替え / 洋式便器等への取替え</p>
-            </div>
-          </div>
-          <div class="renovation-item">
-            <div class="renovation-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" /></svg>
-            </div>
-            <div>
-              <h3>費用の目安</h3>
-              <p>介護保険適用で<strong>上限20万円まで</strong>（自己負担1〜3割）。"つなぐ"は現地調査・お見積り無料です。</p>
-            </div>
-          </div>
-        </div>
-        <div class="center-action">
-          <a href="/renovation" class="btn-primary-outline">
-            住宅改修について詳しく見る
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- サービス一覧への動線 -->
-    <section class="section">
-      <div class="container">
         <span class="section-label">Services</span>
-        <h2 class="section-title">つなぐのサービス</h2>
-        <p class="section-subtitle">お困りごとに合わせてお選びいただけます</p>
+        <h2 class="section-title">"つなぐ"のサービス</h2>
+        <p class="section-subtitle">お悩みに合わせて最適なサービスをご利用いただけます</p>
 
-        <div class="service-nav-grid">
+        <div class="service-nav">
           <a href="/rental" class="service-nav-card">
             <div class="service-nav-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z" /><path d="M5 6h5v2H5zm14 7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z" /></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" /></svg>
             </div>
-            <h3>福祉用具レンタル</h3>
-            <p>車いす・特殊寝台・手すりなど13種の福祉用具を月額レンタル</p>
-            <span class="service-nav-link">詳しく見る</span>
+            <div class="service-nav-body">
+              <h3>福祉用具レンタル</h3>
+              <p>車いす・特殊寝台・手すりなど13種類。介護保険適用で<strong>月々の自己負担1〜3割</strong>。身体状態の変化に応じて交換可能です。</p>
+              <span class="service-nav-link">
+                詳しく見る
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
+              </span>
+            </div>
           </a>
+
           <a href="/sale" class="service-nav-card">
             <div class="service-nav-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" /></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z" /></svg>
             </div>
-            <h3>福祉用具販売</h3>
-            <p>入浴補助用具・腰掛便座など衛生面でレンタルに適さない用具を販売</p>
-            <span class="service-nav-link">詳しく見る</span>
+            <div class="service-nav-body">
+              <h3>福祉用具販売</h3>
+              <p>入浴補助用具・腰掛便座など衛生上レンタルに適さない用具を販売。年間<strong>10万円まで介護保険適用</strong>（自己負担1〜3割）。</p>
+              <span class="service-nav-link">
+                詳しく見る
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
+              </span>
+            </div>
           </a>
+
           <a href="/renovation" class="service-nav-card">
             <div class="service-nav-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
             </div>
-            <h3>住宅改修</h3>
-            <p>手すり設置・段差解消など介護保険で最大20万円まで補助</p>
-            <span class="service-nav-link">詳しく見る</span>
+            <div class="service-nav-body">
+              <h3>住宅改修</h3>
+              <p>手すりの取付け・段差解消・滑り防止など。介護保険で<strong>最大20万円まで補助</strong>（自己負担1〜3割）。現地調査・お見積り無料。</p>
+              <span class="service-nav-link">
+                詳しく見る
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
+              </span>
+            </div>
           </a>
+
           <a href="/online-support" class="service-nav-card">
             <div class="service-nav-icon" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" /></svg>
             </div>
-            <h3>オンラインサポート</h3>
-            <p>ビデオ通話で専門相談員が遠方からでもご相談に対応</p>
-            <span class="service-nav-link">詳しく見る</span>
+            <div class="service-nav-body">
+              <h3>オンラインサポート</h3>
+              <p>遠方の方も安心。ビデオ通話で専門相談員が直接ご相談に対応。<strong>アプリ不要</strong>、スマホ・タブレットからすぐに接続できます。</p>
+              <span class="service-nav-link">
+                詳しく見る
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
+              </span>
+            </div>
           </a>
         </div>
       </div>
@@ -489,16 +466,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.8;
   }
 
-  /* === Renovation === */
-  .renovation-list {
-    max-width: 720px;
-    margin: 0 auto 40px;
-    display: flex;
-    flex-direction: column;
+  /* === Service Nav === */
+  .service-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
-  .renovation-item {
+  .service-nav-card {
     display: flex;
     gap: 20px;
     align-items: flex-start;
@@ -506,79 +481,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     padding: 28px 24px;
-  }
-
-  .renovation-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--color-accent-lt);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-
-  .renovation-item h3 {
-    font-family: var(--font-serif-jp);
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-primary);
-    margin-bottom: 8px;
-  }
-
-  .renovation-item p {
-    font-size: 13px;
-    color: var(--color-text-mid);
-    line-height: 1.8;
-  }
-
-  .center-action { text-align: center; }
-
-  .btn-primary-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1.5px solid var(--color-primary);
-    color: var(--color-primary);
-    padding: 14px 28px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    transition: var(--transition-base);
-  }
-
-  .btn-primary-outline:hover {
-    background: rgba(0, 32, 96, 0.05);
-    transform: translateY(-2px);
-  }
-
-  /* === About Card Link === */
-  .about-card-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    color: var(--color-accent);
-    font-weight: 500;
-    margin-top: 16px;
-    transition: var(--transition-base);
-  }
-  .about-card-link:hover { gap: 10px; }
-
-  /* === Service Nav === */
-  .service-nav-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .service-nav-card {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 32px 24px;
-    text-align: center;
     transition: var(--transition-base);
   }
   .service-nav-card:hover {
@@ -588,18 +490,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .service-nav-icon {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     background: var(--color-accent-lt);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--color-primary);
-    margin: 0 auto 16px;
+    flex-shrink: 0;
   }
 
-  .service-nav-card h3 {
+  .service-nav-body h3 {
     font-family: var(--font-serif-jp);
     font-size: 16px;
     font-weight: 400;
@@ -607,19 +509,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 8px;
   }
 
-  .service-nav-card p {
-    font-size: 12px;
+  .service-nav-body p {
+    font-size: 13px;
     color: var(--color-text-mid);
-    line-height: 1.7;
-    margin-bottom: 16px;
+    line-height: 1.8;
+    margin-bottom: 12px;
   }
 
   .service-nav-link {
-    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
     color: var(--color-accent);
     font-weight: 500;
     transition: var(--transition-base);
   }
+  .service-nav-card:hover .service-nav-link { gap: 8px; }
 
   /* === CTA === */
   .first-cta {
@@ -690,17 +596,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   /* === Responsive === */
   @media (max-width: 768px) {
     .worry-grid,
-    .about-grid {
+    .about-grid,
+    .service-nav {
       grid-template-columns: 1fr;
     }
-    .service-nav-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 640px) {
     .page-header { padding: 100px 16px 40px; }
 
     .insurance-step { flex-direction: column; gap: 12px; }
-    .service-nav-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 
     .cta-actions { flex-direction: column; align-items: stretch; }
 
