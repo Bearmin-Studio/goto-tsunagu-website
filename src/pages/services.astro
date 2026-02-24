@@ -1,0 +1,314 @@
+---
+/**
+ * サービス一覧ページ
+ * 4つのサービスを詳しく紹介
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface ServiceDetail {
+  id: string;
+  tagEn: string;
+  title: string;
+  lead: string;
+  points: string[];
+  imgSrc: string;
+  imgAlt: string;
+  href: string;
+  linkText: string;
+}
+
+const services: ServiceDetail[] = [
+  {
+    id: 'rental',
+    tagEn: 'Rental',
+    title: '福祉用具レンタル',
+    lead: '車いす・特殊寝台・手すり・スロープなど13種類の福祉用具を月額レンタル。介護保険適用で自己負担は1〜3割です。',
+    points: [
+      '身体状態や生活環境に合わせた用具をご提案',
+      '状態変化に応じていつでも交換・変更可能',
+      'メンテナンス・消毒済みの安心品質',
+      '不要になったら返却OK。無駄なコストなし',
+    ],
+    imgSrc: 'https://goto-t.co.jp/images/cat1.png',
+    imgAlt: '福祉用具レンタル',
+    href: '/rental',
+    linkText: 'レンタル用具一覧へ',
+  },
+  {
+    id: 'sale',
+    tagEn: 'Purchase',
+    title: '福祉用具販売',
+    lead: '入浴補助用具・腰掛便座・簡易浴槽など、衛生上レンタルに適さない用具を販売。年間10万円まで介護保険が適用されます。',
+    points: [
+      '指定福祉用具販売事業者として認定',
+      '自己負担1〜3割でご購入いただけます',
+      '専門相談員が適切な用具をアドバイス',
+      'ご自宅までお届け・設置まで対応',
+    ],
+    imgSrc: 'https://goto-t.co.jp/images/cat10.png',
+    imgAlt: '福祉用具販売',
+    href: '/sale',
+    linkText: '販売品目を見る',
+  },
+  {
+    id: 'renovation',
+    tagEn: 'Renovation',
+    title: '住宅改修',
+    lead: '手すり設置・段差解消・床材変更など、介護保険で最大20万円まで補助。専門スタッフが現地調査から施工まで一貫対応します。',
+    points: [
+      '現地調査・お見積り無料',
+      'ケアマネジャーとの連携で適切な改修を実現',
+      '申請書類の作成もサポート',
+      '施工後のアフターフォローも安心',
+    ],
+    imgSrc: 'https://goto-t.co.jp/images/renovation/syain-1.png',
+    imgAlt: '住宅改修',
+    href: '/renovation',
+    linkText: '住宅改修について詳しく',
+  },
+  {
+    id: 'online',
+    tagEn: 'Online Support',
+    title: 'オンラインサポート',
+    lead: '遠方にお住まいの方やご来所が難しい方でも、ビデオ通話で専門相談員が直接ご相談をお受けします。',
+    points: [
+      'スマートフォン・タブレットから簡単接続',
+      '対面と同じ品質のご提案が可能',
+      '遠方のご家族からのご相談も対応',
+      'まずはお試し相談から始められます',
+    ],
+    imgSrc: 'https://goto-t.co.jp/images/support/mimamori.png',
+    imgAlt: 'オンラインサポート',
+    href: '/online-support',
+    linkText: 'オンラインサポートを利用する',
+  },
+];
+---
+
+<BaseLayout
+  title="サービス | 株式会社後藤 福祉事業部 つなぐ"
+  description="福祉用具レンタル・販売・住宅改修・オンラインサポートの4つのサービスで、暮らしを支えます。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Services</span>
+        <h1 class="page-title">サービス一覧</h1>
+        <p class="page-desc">4つのサービスで、暮らしを支えます</p>
+      </div>
+    </div>
+
+    {services.map((s, i) => (
+      <section class:list={['section', { 'bg-alt': i % 2 === 1 }]} id={s.id}>
+        <div class="container">
+          <div class:list={['service-detail', { reverse: i % 2 === 1 }]}>
+            <div class="service-detail-img">
+              <img src={s.imgSrc} alt={s.imgAlt} loading="lazy" />
+            </div>
+            <div class="service-detail-body">
+              <span class="tag-en">{s.tagEn}</span>
+              <h2 class="service-detail-title">{s.title}</h2>
+              <p class="service-detail-lead">{s.lead}</p>
+              <ul class="service-detail-points">
+                {s.points.map((p) => <li>{p}</li>)}
+              </ul>
+              <a href={s.href} class="btn-service">
+                {s.linkText}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- CTA -->
+    <section class="services-cta">
+      <div class="container">
+        <h2>どのサービスが最適かわからない方も<br />お気軽にご相談ください</h2>
+        <p>専門相談員がお話を伺い、最適なサービスをご提案します。</p>
+        <a href="/contact" class="btn-cta-white">
+          無料相談・お問い合わせ
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .page-header :global(.section-label) { color: var(--color-accent); }
+
+  .bg-alt { background: white; }
+
+  /* === Service Detail === */
+  .service-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .service-detail.reverse .service-detail-img { order: 2; }
+  .service-detail.reverse .service-detail-body { order: 1; }
+
+  .service-detail-img {
+    background: var(--color-bg2);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4/3;
+    border: 1px solid var(--color-border);
+  }
+
+  .service-detail-img img {
+    max-height: 280px;
+    object-fit: contain;
+  }
+
+  .tag-en {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .service-detail-title {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .service-detail-lead {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+
+  .service-detail-points {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 28px;
+  }
+
+  .service-detail-points li {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .service-detail-points li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .btn-service {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    transition: var(--transition-base);
+  }
+
+  .btn-service:hover {
+    background: rgba(0, 32, 96, 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* === CTA === */
+  .services-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .services-cta h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .services-cta p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+  }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--color-primary);
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cta-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .service-detail {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .service-detail.reverse .service-detail-img,
+    .service-detail.reverse .service-detail-body { order: unset; }
+
+    .service-detail-img { aspect-ratio: 16/9; padding: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+  }
+</style>
