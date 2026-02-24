@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* ===========================
+   Design Tokens
+   モックアップHTMLから移植
+=========================== */
+@theme {
+  --color-primary:    #002060;
+  --color-primary-lt: #1a3a80;
+  --color-primary-dk: #001040;
+  --color-accent:     #4a90d9;
+  --color-accent-lt:  #d0e8f7;
+  --color-accent-dk:  #2a70b9;
+  --color-bg:         #f5f7fa;
+  --color-bg2:        #edf1f8;
+  --color-text:       #0d1b3e;
+  --color-text-mid:   #3a4a6b;
+  --color-text-lt:    #7a8aab;
+  --color-border:     #d0d8ea;
+
+  --font-serif:  'DM Serif Display', 'Noto Serif JP', serif;
+  --font-serif-jp: 'Noto Serif JP', serif;
+  --font-body:   'Noto Sans JP', sans-serif;
+
+  --radius-sm:  4px;
+  --radius-md:  12px;
+  --radius-lg:  24px;
+
+  --shadow-sm:  0 2px 8px rgba(0, 32, 96, 0.06);
+  --shadow-md:  0 8px 32px rgba(0, 32, 96, 0.10);
+  --shadow-lg:  0 20px 60px rgba(0, 32, 96, 0.12);
+
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===========================
+   Base styles
+=========================== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  font-size: 15px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
