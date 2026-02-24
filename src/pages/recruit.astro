@@ -1,0 +1,304 @@
+---
+/**
+ * 採用情報ページ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jobDetails = [
+  { label: '職種', value: '福祉用具専門相談員' },
+  { label: '雇用形態', value: '正社員 / パートタイム' },
+  { label: '勤務地', value: '富山県高岡市木津769-1（転勤なし）' },
+  { label: '勤務時間', value: '9:00〜17:00（休憩60分）' },
+  { label: '休日', value: '土日祝（事前予約時は出勤あり・振替休日あり）' },
+  { label: '給与', value: '経験・資格に応じて優遇（詳細は面談にて）' },
+  { label: '資格', value: '普通自動車運転免許（必須）/ 福祉用具専門相談員（あれば尚可）' },
+  { label: '福利厚生', value: '社会保険完備 / 交通費支給 / 資格取得支援制度 / 車通勤可' },
+];
+---
+
+<BaseLayout
+  title="採用情報 | 株式会社後藤 福祉事業部 つなぐ"
+  description="福祉用具専門相談員を募集中。未経験OK、資格取得支援制度あり。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Recruit</span>
+        <h1 class="page-title">採用情報</h1>
+        <p class="page-desc">一緒に「つなぐ」仲間を募集しています</p>
+      </div>
+    </div>
+
+    <!-- メッセージ -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="recruit-message">
+          <h2>「ありがとう」が<br />やりがいになる仕事です</h2>
+          <p>
+            私たちは、福祉用具を通じてお客様の暮らしを支えるお仕事をしています。
+            「手すりをつけたら歩きやすくなった」「ぐっすり眠れるようになった」──
+            そんなお客様の笑顔と「ありがとう」の言葉が何よりのやりがいです。
+          </p>
+          <p>
+            未経験でも大丈夫。先輩スタッフが丁寧にサポートし、
+            資格取得支援制度で専門スキルを身につけることができます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 求める人物像 -->
+    <section class="section bg-white">
+      <div class="container">
+        <span class="section-label">Ideal Candidate</span>
+        <h2 class="section-title">求める人物像</h2>
+        <p class="section-subtitle">こんな方を歓迎します</p>
+
+        <div class="persona-grid">
+          <div class="persona-card">
+            <div class="persona-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </div>
+            <h3>人の役に立ちたい方</h3>
+            <p>お客様の生活をより良くしたい、困っている方を助けたいという想いをお持ちの方。</p>
+          </div>
+          <div class="persona-card">
+            <div class="persona-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+              </svg>
+            </div>
+            <h3>コミュニケーションが好きな方</h3>
+            <p>お客様やケアマネジャー、ご家族など多くの方と関わるお仕事です。</p>
+          </div>
+          <div class="persona-card">
+            <div class="persona-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
+              </svg>
+            </div>
+            <h3>学ぶ意欲がある方</h3>
+            <p>未経験歓迎。福祉用具や介護保険の知識は入社後にしっかり学べます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 募集要項 -->
+    <section class="section">
+      <div class="container narrow">
+        <span class="section-label">Job Details</span>
+        <h2 class="section-title">募集要項</h2>
+        <p class="section-subtitle">福祉用具専門相談員</p>
+
+        <table class="job-table">
+          <tbody>
+            {jobDetails.map((row) => (
+              <tr>
+                <th>{row.label}</th>
+                <td>{row.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 応募CTA -->
+    <section class="recruit-cta">
+      <div class="container">
+        <h2>ご応募・ご質問はお気軽に</h2>
+        <p>まずはお話だけでも構いません。<br />お電話またはお問い合わせフォームからご連絡ください。</p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-cta-white">
+            応募・お問い合わせ
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </a>
+          <a href="tel:0766-50-1555" class="btn-cta-outline">0766-50-1555</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .bg-white { background: white; }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  /* === Message === */
+  .recruit-message {
+    background: var(--color-accent-lt);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 40px 36px;
+  }
+
+  .recruit-message h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .recruit-message p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 12px;
+  }
+
+  .recruit-message p:last-child { margin-bottom: 0; }
+
+  /* === Persona === */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .persona-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .persona-icon {
+    width: 56px; height: 56px;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin: 0 auto 20px;
+  }
+
+  .persona-card h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .persona-card p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  /* === Job Table === */
+  .job-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .job-table th,
+  .job-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .job-table th {
+    width: 120px;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 13px;
+    background: var(--color-bg2);
+  }
+
+  .job-table td { color: var(--color-text-mid); }
+
+  /* === CTA === */
+  .recruit-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .recruit-cta h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .recruit-cta p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--color-primary);
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+
+  .btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 14px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-cta-outline:hover { border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .persona-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .recruit-message { padding: 28px 20px; }
+    .job-table th { width: 90px; font-size: 12px; padding: 12px 10px; }
+    .job-table td { font-size: 13px; padding: 12px 10px; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .btn-cta-white, .btn-cta-outline { justify-content: center; }
+  }
+</style>
