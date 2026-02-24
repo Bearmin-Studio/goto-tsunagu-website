@@ -1,0 +1,393 @@
+---
+/**
+ * 住宅改修ページ
+ * 対象工事・介護保険補助・施工の流れ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const targetWorks = [
+  { title: '手すりの取付け', desc: '廊下・トイレ・浴室・玄関・階段など、転倒防止と移動をサポートします。' },
+  { title: '段差の解消', desc: '部屋間・玄関・浴室の段差を解消し、車いすや歩行器でもスムーズに移動できるように。' },
+  { title: '床材の変更', desc: '滑りやすい床を安全な素材に変更。移動の円滑化にも対応します。' },
+  { title: '扉の取替え', desc: '開き戸を引き戸やアコーディオンドアに変更し、車いすでも出入りしやすく。' },
+  { title: '洋式便器への取替え', desc: '和式トイレから洋式トイレへの変更。立ち座りの負担を軽減します。' },
+];
+
+const flowSteps = [
+  { num: '1', title: 'ご相談・現地調査', desc: '専門スタッフがご自宅に伺い、現状を確認。改修箇所と方法をご提案します。（無料）' },
+  { num: '2', title: 'お見積り・申請', desc: 'お見積りを作成し、ケアマネジャーと連携して介護保険の事前申請を行います。' },
+  { num: '3', title: '施工', desc: 'お住まいの状況に配慮しながら、丁寧に施工いたします。' },
+  { num: '4', title: '完了・アフターフォロー', desc: '施工後の確認と申請書類提出をサポート。その後も不具合があればすぐ対応します。' },
+];
+---
+
+<BaseLayout
+  title="住宅改修 | 株式会社後藤 福祉事業部 つなぐ"
+  description="介護保険適用の住宅改修。手すり設置・段差解消など最大20万円まで補助。現地調査・お見積り無料。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Renovation</span>
+        <h1 class="page-title">住宅改修</h1>
+        <p class="page-desc">
+          介護保険で最大20万円まで補助。<br />
+          現地調査・お見積りは無料です。
+        </p>
+      </div>
+    </div>
+
+    <!-- 概要 -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="highlight-box">
+          <h2>介護保険を使った住宅改修</h2>
+          <p>
+            要介護（要支援）認定を受けた方は、介護保険を利用して住宅改修を行うことができます。
+            費用の上限は<strong>20万円</strong>（自己負担1〜3割）。
+            "つなぐ"では現地調査からお見積り、施工、申請手続きのサポートまでワンストップで対応します。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 対象工事 -->
+    <section class="section bg-white">
+      <div class="container">
+        <span class="section-label">Target Works</span>
+        <h2 class="section-title">対象となる工事</h2>
+        <p class="section-subtitle">介護保険が適用される5つの工事種別</p>
+
+        <div class="works-grid">
+          {targetWorks.map((w, i) => (
+            <div class="work-card">
+              <span class="work-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{w.title}</h3>
+              <p>{w.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 施工の流れ -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label">Flow</span>
+        <h2 class="section-title">施工の流れ</h2>
+        <p class="section-subtitle">ご相談から完了まで、丁寧にサポートします</p>
+
+        <div class="reno-flow">
+          {flowSteps.map((step) => (
+            <div class="reno-flow-step">
+              <div class="reno-flow-num">{step.num}</div>
+              <div class="reno-flow-body">
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 費用の目安 -->
+    <section class="section bg-white">
+      <div class="container narrow">
+        <span class="section-label">Cost</span>
+        <h2 class="section-title">費用の目安</h2>
+        <p class="section-subtitle">介護保険適用で自己負担を大幅に軽減</p>
+
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>工事内容</th>
+              <th>費用目安</th>
+              <th>自己負担（1割）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>手すり取付け（1箇所）</td>
+              <td>2〜5万円</td>
+              <td>2,000〜5,000円</td>
+            </tr>
+            <tr>
+              <td>段差解消（1箇所）</td>
+              <td>3〜8万円</td>
+              <td>3,000〜8,000円</td>
+            </tr>
+            <tr>
+              <td>床材変更（1部屋）</td>
+              <td>5〜15万円</td>
+              <td>5,000〜15,000円</td>
+            </tr>
+            <tr>
+              <td>扉の取替え（1箇所）</td>
+              <td>5〜15万円</td>
+              <td>5,000〜15,000円</td>
+            </tr>
+            <tr>
+              <td>洋式便器への取替え</td>
+              <td>10〜20万円</td>
+              <td>10,000〜20,000円</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="cost-note">※ 上記は概算です。実際の費用は現地調査後にお見積りいたします。</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="reno-cta">
+      <div class="container">
+        <h2>まずは無料の現地調査から</h2>
+        <p>「こんな工事もできる？」など、お気軽にご相談ください。</p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-cta-white">
+            無料相談・お見積り
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </a>
+          <a href="tel:0766-50-1555" class="btn-cta-outline">0766-50-1555</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.8; }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+
+  .bg-white { background: white; }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  /* === Highlight === */
+  .highlight-box {
+    background: var(--color-accent-lt);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 32px 36px;
+  }
+
+  .highlight-box h2 {
+    font-family: var(--font-serif-jp);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .highlight-box p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+  }
+
+  /* === Works Grid === */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .work-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(to right, var(--color-accent), transparent);
+  }
+
+  .work-num {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .work-card h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+  }
+
+  .work-card p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  /* === Flow === */
+  .reno-flow {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reno-flow-step {
+    display: flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: flex-start;
+  }
+
+  .reno-flow-step:first-child { border-top: 1px solid var(--color-border); }
+
+  .reno-flow-num {
+    width: 48px; height: 48px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .reno-flow-body h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .reno-flow-body p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  /* === Cost Table === */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+  }
+
+  .cost-table th,
+  .cost-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cost-table th {
+    background: var(--color-primary);
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .cost-table td { color: var(--color-text-mid); }
+
+  .cost-table tbody tr:hover { background: var(--color-bg); }
+
+  .cost-note {
+    font-size: 12px;
+    color: var(--color-text-lt);
+  }
+
+  /* === CTA === */
+  .reno-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .reno-cta h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .reno-cta p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+  }
+
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--color-primary);
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+
+  .btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 14px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-cta-outline:hover { border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .works-grid { grid-template-columns: 1fr; }
+    .reno-flow-step { flex-direction: column; gap: 12px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .highlight-box { padding: 24px 20px; }
+    .cost-table { font-size: 12px; }
+    .cost-table th, .cost-table td { padding: 10px 8px; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .btn-cta-white, .btn-cta-outline { justify-content: center; }
+  }
+</style>
