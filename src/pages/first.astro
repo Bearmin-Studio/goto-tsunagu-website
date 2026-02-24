@@ -1,0 +1,588 @@
+---
+/**
+ * はじめての方へページ
+ * 福祉用具初心者向け：レンタルと購入の違い、介護保険、利用の流れ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="はじめての方へ | 株式会社後藤 福祉事業部 つなぐ"
+  description="福祉用具のレンタル・購入が初めての方へ。介護保険の仕組みやご利用の流れをわかりやすくご説明します。"
+>
+  <main>
+    <!-- ページヘッダー -->
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">For Beginners</span>
+        <h1 class="page-title">はじめての方へ</h1>
+        <p class="page-desc">
+          「福祉用具って何？」「どうすれば使えるの？」<br />
+          初めての方にも、わかりやすくご説明いたします。
+        </p>
+      </div>
+    </div>
+
+    <!-- こんなお悩みありませんか？ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="h2-center">こんなお悩みありませんか？</h2>
+        <div class="worry-grid">
+          <div class="worry-card">
+            <span class="worry-icon" aria-hidden="true">?</span>
+            <p>介護が必要になったけど<br /><strong>どこに相談すればいいかわからない</strong></p>
+          </div>
+          <div class="worry-card">
+            <span class="worry-icon" aria-hidden="true">?</span>
+            <p>福祉用具は<br /><strong>レンタルと購入どちらがお得？</strong></p>
+          </div>
+          <div class="worry-card">
+            <span class="worry-icon" aria-hidden="true">?</span>
+            <p>介護保険を使いたいけど<br /><strong>手続きの方法がわからない</strong></p>
+          </div>
+          <div class="worry-card">
+            <span class="worry-icon" aria-hidden="true">?</span>
+            <p>自宅の段差や手すりなど<br /><strong>住環境を整えたい</strong></p>
+          </div>
+        </div>
+        <p class="worry-answer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </svg>
+          すべて"つなぐ"にお任せください。<strong>相談・お見積り無料</strong>でサポートします。
+        </p>
+      </div>
+    </section>
+
+    <!-- 福祉用具サービスとは -->
+    <section class="section bg-white">
+      <div class="container">
+        <span class="section-label">What is</span>
+        <h2 class="section-title">福祉用具サービスとは</h2>
+        <p class="section-subtitle">日常生活をサポートする用具をお届けします</p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-card-header rental">レンタル</div>
+            <div class="about-card-body">
+              <p class="about-card-desc">
+                車いす・特殊寝台・手すり・スロープなど<strong>13種類の福祉用具</strong>を月額でレンタルできます。
+              </p>
+              <ul class="about-card-list">
+                <li>介護保険適用で<strong>自己負担1〜3割</strong></li>
+                <li>身体状態の変化に応じて交換可能</li>
+                <li>メンテナンス・消毒済み</li>
+                <li>不要になったら返却OK</li>
+              </ul>
+              <p class="about-card-example">
+                <strong>例）</strong>車いすの場合：月額 約300〜500円（1割負担時）
+              </p>
+            </div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-header purchase">購入</div>
+            <div class="about-card-body">
+              <p class="about-card-desc">
+                入浴補助用具・腰掛便座・簡易浴槽など、<strong>衛生上レンタルに適さない用具</strong>が対象です。
+              </p>
+              <ul class="about-card-list">
+                <li>年間<strong>10万円まで</strong>介護保険適用</li>
+                <li>自己負担は1〜3割</li>
+                <li>同一年度で同一種目は原則1回</li>
+                <li>指定事業者からの購入が条件</li>
+              </ul>
+              <p class="about-card-example">
+                <strong>例）</strong>シャワーチェア：約1,000〜3,000円（1割負担時）
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 介護保険の使い方 -->
+    <section class="section">
+      <div class="container">
+        <span class="section-label">Insurance</span>
+        <h2 class="section-title">介護保険の使い方</h2>
+        <p class="section-subtitle">申請からご利用まで、サポートいたします</p>
+
+        <div class="insurance-steps">
+          <div class="insurance-step">
+            <div class="insurance-step-num">1</div>
+            <div class="insurance-step-body">
+              <h3>要介護（要支援）認定を受ける</h3>
+              <p>お住まいの市区町村の窓口で介護保険の申請を行います。認定調査の後、要介護度（要支援1〜要介護5）が決定されます。</p>
+            </div>
+          </div>
+          <div class="insurance-step">
+            <div class="insurance-step-num">2</div>
+            <div class="insurance-step-body">
+              <h3>ケアプランを作成する</h3>
+              <p>ケアマネジャーが利用者様の状態に合わせたケアプラン（介護サービス計画）を作成します。</p>
+            </div>
+          </div>
+          <div class="insurance-step">
+            <div class="insurance-step-num">3</div>
+            <div class="insurance-step-body">
+              <h3>福祉用具を選ぶ</h3>
+              <p>"つなぐ"の<strong>福祉用具専門相談員</strong>がご自宅に伺い、最適な用具をご提案いたします。</p>
+            </div>
+          </div>
+          <div class="insurance-step">
+            <div class="insurance-step-num">4</div>
+            <div class="insurance-step-body">
+              <h3>ご利用開始</h3>
+              <p>納品・設置後もアフターフォローを定期的に実施。お体の状態変化に合わせて用具の変更もできます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="insurance-note">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+          </svg>
+          <p>
+            まだ介護保険の申請をされていない方もご安心ください。<br />
+            "つなぐ"では<strong>申請のお手伝い</strong>から対応いたします。まずはお気軽にご相談ください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 住宅改修について -->
+    <section class="section bg-white">
+      <div class="container">
+        <span class="section-label">Renovation</span>
+        <h2 class="section-title">住宅改修について</h2>
+        <p class="section-subtitle">介護保険で最大20万円まで補助されます</p>
+
+        <div class="renovation-list">
+          <div class="renovation-item">
+            <div class="renovation-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg>
+            </div>
+            <div>
+              <h3>対象となる工事</h3>
+              <p>手すりの取付け / 段差の解消 / 滑り防止・移動円滑化のための床材変更 / 引き戸等への扉の取替え / 洋式便器等への取替え</p>
+            </div>
+          </div>
+          <div class="renovation-item">
+            <div class="renovation-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" /></svg>
+            </div>
+            <div>
+              <h3>費用の目安</h3>
+              <p>介護保険適用で<strong>上限20万円まで</strong>（自己負担1〜3割）。"つなぐ"は現地調査・お見積り無料です。</p>
+            </div>
+          </div>
+        </div>
+        <div class="center-action">
+          <a href="/renovation" class="btn-primary-outline">
+            住宅改修について詳しく見る
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="first-cta">
+      <div class="container">
+        <h2>まずはお気軽にご相談ください</h2>
+        <p>「何を選べばいいかわからない」方も大歓迎。<br />専門スタッフが丁寧にお答えします。</p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-cta-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+            お問い合わせ
+          </a>
+          <a href="tel:0766-50-1555" class="btn-cta-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" />
+            </svg>
+            0766-50-1555
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* === Page Header === */
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .page-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+  }
+
+  .page-header :global(.section-label) { color: var(--color-accent); }
+
+  .bg-white { background: white; }
+
+  /* === Worry === */
+  .h2-center {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 400;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .worry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+
+  .worry-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .worry-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--color-accent-lt);
+    color: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .worry-card p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+
+  .worry-answer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-primary);
+    background: var(--color-accent-lt);
+    padding: 20px 32px;
+    border-radius: var(--radius-md);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .worry-answer svg { color: var(--color-accent); flex-shrink: 0; }
+
+  /* === About (Rental vs Purchase) === */
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .about-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  .about-card-header {
+    padding: 16px 24px;
+    font-family: var(--font-serif-jp);
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  .about-card-header.rental { background: var(--color-primary); }
+  .about-card-header.purchase { background: var(--color-accent-dk); }
+
+  .about-card-body { padding: 28px 24px; }
+
+  .about-card-desc {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-card-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .about-card-list li {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .about-card-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .about-card-example {
+    font-size: 12px;
+    color: var(--color-text-lt);
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  /* === Insurance Steps === */
+  .insurance-steps {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .insurance-step {
+    display: flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-border);
+    align-items: flex-start;
+  }
+
+  .insurance-step:first-child { border-top: 1px solid var(--color-border); }
+
+  .insurance-step-num {
+    width: 48px;
+    height: 48px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .insurance-step-body h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .insurance-step-body p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  .insurance-note {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--color-accent-lt);
+    padding: 20px 24px;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .insurance-note svg { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
+
+  .insurance-note p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  /* === Renovation === */
+  .renovation-list {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .renovation-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+  }
+
+  .renovation-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .renovation-item h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .renovation-item p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  .center-action { text-align: center; }
+
+  .btn-primary-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-primary-outline:hover {
+    background: rgba(0, 32, 96, 0.05);
+    transform: translateY(-2px);
+  }
+
+  /* === CTA === */
+  .first-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .first-cta h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .first-cta p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--color-primary);
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cta-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 14px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-cta-outline:hover {
+    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .worry-grid,
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+
+    .insurance-step { flex-direction: column; gap: 12px; }
+
+    .cta-actions { flex-direction: column; align-items: stretch; }
+
+    .btn-cta-white,
+    .btn-cta-outline { justify-content: center; }
+  }
+</style>

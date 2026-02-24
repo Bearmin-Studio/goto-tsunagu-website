@@ -54,15 +54,3 @@ export interface Staff extends MicroCMSContentId, MicroCMSDate {
   order: number;
 }
 
-/* ===========================
-   APIエンドポイントマッピング
-=========================== */
-export interface Endpoints {
-  list: {
-    news: News;
-    faq: Faq;
-    staff: Staff;
-    services: Service;
-  };
-  object: Record<string, never>;
-}
