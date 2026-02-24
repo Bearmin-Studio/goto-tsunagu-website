@@ -1,0 +1,335 @@
+---
+/**
+ * 会社概要ページ
+ * 会社情報、代表メッセージ、スタッフ紹介、アクセス
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const companyInfo = [
+  { label: '会社名', value: '株式会社後藤' },
+  { label: '事業部名', value: '福祉事業部 つなぐ' },
+  { label: '代表取締役', value: '後藤 純' },
+  { label: '設立', value: '2020年' },
+  { label: '所在地', value: '〒933-0857 富山県高岡市木津769-1' },
+  { label: '電話番号', value: '0766-50-1555' },
+  { label: 'FAX', value: '0766-75-7687' },
+  { label: '営業時間', value: '平日 9:00〜17:00' },
+  { label: '事業内容', value: '福祉用具貸与 / 特定福祉用具販売 / 住宅改修 / オンラインサポート' },
+  { label: '対象エリア', value: '富山県呉西地区（高岡市・射水市・氷見市・砺波市・小矢部市・南砺市）を中心に対応' },
+];
+---
+
+<BaseLayout
+  title="会社概要 | 株式会社後藤 福祉事業部 つなぐ"
+  description="株式会社後藤 福祉事業部つなぐの会社概要、代表メッセージ、スタッフ紹介、アクセス情報。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">About Us</span>
+        <h1 class="page-title">会社について</h1>
+        <p class="page-desc">株式会社後藤 福祉事業部 つなぐ</p>
+      </div>
+    </div>
+
+    <!-- 代表メッセージ -->
+    <section class="section" id="message">
+      <div class="container">
+        <div class="message-grid">
+          <div class="message-img">
+            <img
+              src="https://goto-t.co.jp/wp-content/uploads/2020/11/DSC1763.png"
+              alt="代表取締役 後藤純"
+              loading="lazy"
+              width="400"
+              height="500"
+            />
+          </div>
+          <div class="message-body">
+            <span class="section-label">Message</span>
+            <h2 class="section-title">代表メッセージ</h2>
+            <p class="message-name">代表取締役　後藤　純</p>
+            <p class="message-text">
+              株式会社後藤は2020年に創業いたしました。
+              高齢化社会が進む中、介護を必要とされるお客様の生活を支えるためには
+              周りのご家族様、福祉・医療関係者様との連携が不可欠と強く感じております。
+            </p>
+            <p class="message-text">
+              住み慣れたご自宅で、大切なご家族と過ごす時間を支えるために。
+              お客様一人ひとりの想いを丁寧に"つなぐ"サービスを心がけてまいります。
+            </p>
+            <p class="message-text">
+              「笑顔をつなげる、ありがとうをつなげる」── それが私たちの使命です。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 会社概要 -->
+    <section class="section bg-white" id="company">
+      <div class="container narrow">
+        <span class="section-label">Company</span>
+        <h2 class="section-title">会社概要</h2>
+        <p class="section-subtitle">基本情報</p>
+
+        <table class="info-table">
+          <tbody>
+            {companyInfo.map((row) => (
+              <tr>
+                <th>{row.label}</th>
+                <td>{row.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="section" id="staff">
+      <div class="container">
+        <span class="section-label">Staff</span>
+        <h2 class="section-title">スタッフ紹介</h2>
+        <p class="section-subtitle">資格を持つ専門スタッフがサポートします</p>
+
+        <div class="staff-features">
+          <div class="staff-feature">
+            <div class="sf-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z" />
+              </svg>
+            </div>
+            <h3>福祉用具専門相談員</h3>
+            <p>利用者様の身体状況や生活環境に合わせた最適な福祉用具をご提案。定期的なモニタリングも行います。</p>
+          </div>
+          <div class="staff-feature">
+            <div class="sf-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+              </svg>
+            </div>
+            <h3>福祉住環境コーディネーター</h3>
+            <p>住宅改修の専門知識を活かし、安全で快適な住環境づくりをサポートします。</p>
+          </div>
+          <div class="staff-feature">
+            <div class="sf-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </div>
+            <h3>丁寧な対応</h3>
+            <p>「手すり一本」の小さなお困りごとから、複合的なお悩みまで親身に対応いたします。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- アクセス -->
+    <section class="section bg-white" id="access">
+      <div class="container narrow">
+        <span class="section-label">Access</span>
+        <h2 class="section-title">アクセス</h2>
+        <p class="section-subtitle">〒933-0857 富山県高岡市木津769-1</p>
+
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.0!2d136.98!3d36.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5a-M5bGx55yM6auY5bKh5biC5pyo5rSl!5e0!3m2!1sja!2sjp!4v1"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="株式会社後藤 福祉事業部つなぐ 所在地"
+          ></iframe>
+        </div>
+
+        <div class="access-info">
+          <div class="access-item">
+            <h3>お車でお越しの方</h3>
+            <p>能越自動車道 高岡ICから約10分。駐車場完備。</p>
+          </div>
+          <div class="access-item">
+            <h3>営業時間</h3>
+            <p>平日 9:00〜17:00（土日祝は事前予約制）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .bg-white { background: white; }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  /* === Message === */
+  .message-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .message-img img {
+    width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .message-name {
+    font-family: var(--font-serif-jp);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-text-lt);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .message-text {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 2.0;
+    margin-bottom: 16px;
+  }
+
+  .message-text:last-of-type {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    color: var(--color-primary);
+    font-weight: 400;
+  }
+
+  /* === Info Table === */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table th,
+  .info-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .info-table th {
+    width: 140px;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 13px;
+    background: var(--color-bg);
+  }
+
+  .info-table td { color: var(--color-text-mid); }
+
+  /* === Staff Features === */
+  .staff-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .staff-feature {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .sf-icon {
+    width: 56px; height: 56px;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    margin: 0 auto 20px;
+  }
+
+  .staff-feature h3 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+  }
+
+  .staff-feature p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+  }
+
+  /* === Map === */
+  .map-wrap {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    margin-bottom: 28px;
+  }
+
+  .map-wrap iframe { display: block; }
+
+  .access-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .access-item {
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    border: 1px solid var(--color-border);
+  }
+
+  .access-item h3 {
+    font-size: 14px;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+  }
+
+  .access-item p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .message-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .message-img { max-width: 300px; margin: 0 auto; }
+    .staff-features { grid-template-columns: 1fr; }
+    .access-info { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .info-table th { width: 100px; font-size: 12px; padding: 12px 10px; }
+    .info-table td { font-size: 13px; padding: 12px 10px; }
+  }
+</style>
