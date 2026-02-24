@@ -1,0 +1,236 @@
+---
+/**
+ * サイト共通フッター
+ * - 会社情報 / サービス / 会社情報 / サポートの4カラム
+ * - コピーライト / プライバシーポリシー
+ */
+
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+const serviceLinks: FooterLink[] = [
+  { label: '福祉用具レンタル', href: '/rental' },
+  { label: '福祉用具販売', href: '/sale' },
+  { label: '住宅改修', href: '/renovation' },
+  { label: 'オンラインサポート', href: '/online-support' },
+];
+
+const companyLinks: FooterLink[] = [
+  { label: '会社概要', href: '/about' },
+  { label: 'スタッフ紹介', href: '/about#staff' },
+  { label: '採用情報', href: '/recruit' },
+  { label: 'お知らせ', href: '/news' },
+];
+
+const supportLinks: FooterLink[] = [
+  { label: 'はじめての方へ', href: '/first' },
+  { label: 'よくある質問', href: '/faq' },
+  { label: 'ご利用案内', href: '/guide' },
+  { label: 'お問い合わせ', href: '/contact' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <!-- 会社情報 -->
+      <div class="footer-company">
+        <img
+          src="https://goto-t.co.jp/wp-content/uploads/2023/10/logo.png"
+          alt="株式会社後藤 福祉事業部つなぐ"
+          class="footer-logo"
+          width="120"
+          height="32"
+        />
+        <p class="footer-info">
+          株式会社後藤 福祉事業部 つなぐ<br />
+          〒933-0857 富山県高岡市木津769-1<br />
+          Tel: 0766-50-1555　Fax: 0766-75-7687<br />
+          営業時間: 平日 9:00〜17:00
+        </p>
+      </div>
+
+      <!-- サービス -->
+      <div>
+        <p class="footer-col-title">サービス</p>
+        <ul class="footer-links">
+          {serviceLinks.map((link) => (
+            <li>
+              <a href={link.href}>
+                <svg class="footer-arrow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- 会社情報 -->
+      <div>
+        <p class="footer-col-title">会社情報</p>
+        <ul class="footer-links">
+          {companyLinks.map((link) => (
+            <li>
+              <a href={link.href}>
+                <svg class="footer-arrow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- サポート -->
+      <div>
+        <p class="footer-col-title">サポート</p>
+        <ul class="footer-links">
+          {supportLinks.map((link) => (
+            <li>
+              <a href={link.href}>
+                <svg class="footer-arrow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; {currentYear} 株式会社後藤 福祉事業部 つなぐ. All rights reserved.</p>
+      <a href="/privacy" class="footer-privacy">プライバシーポリシー</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary-dk);
+    color: rgba(255, 255, 255, 0.55);
+    padding: 64px 32px 32px;
+  }
+
+  .footer-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(10) opacity(0.85);
+    margin-bottom: 16px;
+  }
+
+  .footer-info {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+
+  .footer-col-title {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-links a:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .footer-arrow {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  .footer-privacy {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    transition: var(--transition-base);
+  }
+
+  .footer-privacy:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 1024px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .footer-company {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 48px 16px 24px;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .footer-company {
+      grid-column: span 1;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+</style>
