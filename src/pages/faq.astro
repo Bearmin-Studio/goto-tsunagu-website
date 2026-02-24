@@ -1,0 +1,292 @@
+---
+/**
+ * よくある質問ページ
+ * アコーディオン形式（details/summary でJS不要）
+ * 将来的にmicroCMS連携可能な構造
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface FaqCategory {
+  title: string;
+  items: FaqItem[];
+}
+
+const faqCategories: FaqCategory[] = [
+  {
+    title: 'レンタル・購入について',
+    items: [
+      {
+        question: '福祉用具のレンタルと購入、どちらがお得ですか？',
+        answer: 'お体の状態変化が見込まれる場合はレンタルがおすすめです。月額で利用でき、不要になったら返却できます。一方、入浴補助用具など衛生上の理由から購入が適した用具もあります。お気軽にご相談ください。',
+      },
+      {
+        question: '介護保険を使わずにレンタルすることはできますか？',
+        answer: 'はい、自費レンタルも承っております。要介護認定を受けていない方や、介護保険対象外の用具についてもご相談ください。',
+      },
+      {
+        question: 'レンタルしている用具を交換することはできますか？',
+        answer: 'はい、お体の状態変化に応じていつでも交換可能です。福祉用具専門相談員が定期的にモニタリングを行い、最適な用具をご提案します。',
+      },
+      {
+        question: 'レンタル用具の衛生面は大丈夫ですか？',
+        answer: 'ご返却いただいた用具は専門業者による洗浄・消毒・メンテナンスを行い、品質基準をクリアしたもののみ再レンタルしています。安心してご利用ください。',
+      },
+    ],
+  },
+  {
+    title: '介護保険について',
+    items: [
+      {
+        question: '介護保険の申請方法を教えてください。',
+        answer: 'お住まいの市区町村の介護保険窓口で申請します。"つなぐ"では申請のお手伝いからサポートいたしますので、まずはお気軽にお電話ください。',
+      },
+      {
+        question: '要介護認定を受けていませんが相談できますか？',
+        answer: 'もちろんです。要介護認定の申請方法からご案内いたします。また、自費でのレンタル・購入も承っております。',
+      },
+      {
+        question: '介護保険の自己負担割合はどのくらいですか？',
+        answer: '所得に応じて1割・2割・3割のいずれかです。多くの方は1割負担でご利用いただけます。詳しくはお住まいの市区町村窓口またはケアマネジャーにご確認ください。',
+      },
+    ],
+  },
+  {
+    title: '住宅改修について',
+    items: [
+      {
+        question: '住宅改修にかかる費用はどのくらいですか？',
+        answer: '工事内容により異なりますが、介護保険適用で上限20万円まで（自己負担1〜3割）。手すり取付け1箇所で2〜5万円程度が目安です。現地調査・お見積りは無料ですのでお気軽にお問い合わせください。',
+      },
+      {
+        question: '賃貸住宅でも住宅改修はできますか？',
+        answer: '大家様の許可が必要ですが、退去時の原状回復が可能な工事であれば対応可能な場合があります。まずはご相談ください。',
+      },
+      {
+        question: '工事にはどのくらいの期間がかかりますか？',
+        answer: '手すり取付けなど簡易な工事は半日〜1日程度、床材変更や扉の取替えなど大がかりな工事は2〜5日程度が目安です。',
+      },
+    ],
+  },
+  {
+    title: 'ご利用全般',
+    items: [
+      {
+        question: '営業エリアはどこまでですか？',
+        answer: '富山県呉西地区（高岡市・射水市・氷見市・砺波市・小矢部市・南砺市）を中心にサービスを提供しています。エリア外の方もまずはご相談ください。',
+      },
+      {
+        question: '相談やお見積りに費用はかかりますか？',
+        answer: '相談・お見積りはすべて無料です。訪問でのご相談も無料で承っております。',
+      },
+      {
+        question: '土日祝も対応していますか？',
+        answer: '基本の営業時間は平日9:00〜17:00ですが、事前にご連絡いただければ土日祝も対応可能です。緊急時はお電話ください。',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="よくある質問 | 株式会社後藤 福祉事業部 つなぐ"
+  description="福祉用具レンタル・販売・住宅改修に関するよくある質問をまとめました。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">FAQ</span>
+        <h1 class="page-title">よくある質問</h1>
+        <p class="page-desc">お客様からよくいただくご質問をまとめました。</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container narrow">
+        {faqCategories.map((cat) => (
+          <div class="faq-category">
+            <h2 class="faq-category-title">{cat.title}</h2>
+            <div class="faq-list">
+              {cat.items.map((item) => (
+                <details class="faq-item">
+                  <summary class="faq-question">
+                    <span class="faq-q-mark" aria-hidden="true">Q</span>
+                    <span>{item.question}</span>
+                    <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                    </svg>
+                  </summary>
+                  <div class="faq-answer">
+                    <span class="faq-a-mark" aria-hidden="true">A</span>
+                    <p>{item.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        <div class="faq-contact">
+          <p>
+            上記以外のご質問やご不明点がございましたら、<br />
+            お気軽にお問い合わせください。
+          </p>
+          <a href="/contact" class="btn-contact">
+            お問い合わせ
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  /* === Category === */
+  .faq-category { margin-bottom: 48px; }
+  .faq-category:last-child { margin-bottom: 0; }
+
+  .faq-category-title {
+    font-family: var(--font-serif-jp);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-primary);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-accent);
+    margin-bottom: 0;
+  }
+
+  /* === Item === */
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 14px;
+    color: var(--color-text);
+    line-height: 1.7;
+    transition: var(--transition-base);
+  }
+
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::marker { display: none; content: ''; }
+
+  .faq-question:hover { color: var(--color-primary); }
+
+  .faq-q-mark {
+    width: 28px; height: 28px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .faq-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: var(--color-text-lt);
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .faq-chevron { transform: rotate(180deg); }
+
+  .faq-answer {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 0 0 24px;
+    margin-left: 0;
+  }
+
+  .faq-a-mark {
+    width: 28px; height: 28px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    padding-top: 4px;
+  }
+
+  /* === Contact === */
+  .faq-contact {
+    margin-top: 56px;
+    text-align: center;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    padding: 40px 32px;
+  }
+
+  .faq-contact p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .btn-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary);
+    color: white;
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-contact:hover {
+    background: var(--color-primary-lt);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .faq-contact { padding: 28px 20px; }
+  }
+</style>
