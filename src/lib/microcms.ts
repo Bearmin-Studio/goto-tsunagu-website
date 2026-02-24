@@ -7,7 +7,7 @@
  */
 import { createClient } from 'microcms-js-sdk';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
-import type { News, Faq, Staff, Endpoints } from '../types/microcms';
+import type { News, Faq, Staff } from '../types/microcms';
 
 /* ===========================
    Client
@@ -55,13 +55,54 @@ export async function getFaqList(queries?: MicroCMSQueries) {
    Staff
 =========================== */
 export async function getStaffList(queries?: MicroCMSQueries) {
-  if (!client) return { contents: [], totalCount: 0, offset: 0, limit: 10 };
+  if (!client) return { contents: getDummyStaff(), totalCount: getDummyStaff().length, offset: 0, limit: 10 };
   return client.getList<Staff>({ endpoint: 'staff', queries });
 }
 
 /* ===========================
    ダミーデータ（API未設定時のフォールバック）
 =========================== */
+function getDummyStaff(): (Staff & { id: string })[] {
+  return [
+    {
+      id: 'staff-1',
+      name: '後藤 純',
+      role: '代表取締役 / 福祉用具専門相談員',
+      message: '「笑顔をつなげる、ありがとうをつなげる」をモットーに、お客様一人ひとりに寄り添ったサービスを提供してまいります。',
+      qualifications: '福祉用具専門相談員 / 福祉住環境コーディネーター2級',
+      order: 1,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      updatedAt: '2024-01-01T00:00:00.000Z',
+      publishedAt: '2024-01-01T00:00:00.000Z',
+      revisedAt: '2024-01-01T00:00:00.000Z',
+    },
+    {
+      id: 'staff-2',
+      name: 'スタッフA',
+      role: '福祉用具専門相談員',
+      message: 'ご利用者様の生活がより豊かになるよう、最適な福祉用具をご提案いたします。お気軽にご相談ください。',
+      qualifications: '福祉用具専門相談員 / 介護福祉士',
+      order: 2,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      updatedAt: '2024-01-01T00:00:00.000Z',
+      publishedAt: '2024-01-01T00:00:00.000Z',
+      revisedAt: '2024-01-01T00:00:00.000Z',
+    },
+    {
+      id: 'staff-3',
+      name: 'スタッフB',
+      role: '福祉用具専門相談員',
+      message: '住宅改修から福祉用具まで、住みやすい暮らしのお手伝いをさせていただきます。',
+      qualifications: '福祉用具専門相談員 / 福祉住環境コーディネーター2級',
+      order: 3,
+      createdAt: '2024-01-01T00:00:00.000Z',
+      updatedAt: '2024-01-01T00:00:00.000Z',
+      publishedAt: '2024-01-01T00:00:00.000Z',
+      revisedAt: '2024-01-01T00:00:00.000Z',
+    },
+  ];
+}
+
 function getDummyNews(): (News & { id: string })[] {
   return [
     {
