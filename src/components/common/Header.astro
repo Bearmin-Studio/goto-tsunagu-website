@@ -2,19 +2,31 @@
 /**
  * サイト共通ヘッダー
  * - 固定ヘッダー（backdrop-blur）
- * - ロゴ / ナビ / 電話番号 / お問い合わせボタン
+ * - ロゴ / ナビ（サービスはドロップダウン）/ 電話番号 / お問い合わせボタン
  * - モバイル: ハンバーガーメニュー
  */
 
-interface NavItem {
+interface SubNavItem {
   label: string;
   href: string;
 }
 
+interface NavItem {
+  label: string;
+  href: string;
+  children?: SubNavItem[];
+}
+
+const serviceChildren: SubNavItem[] = [
+  { label: '福祉用具レンタル', href: '/rental' },
+  { label: '福祉用具販売', href: '/sale' },
+  { label: '住宅改修', href: '/renovation' },
+  { label: 'オンラインサポート', href: '/online-support' },
+];
+
 const navItems: NavItem[] = [
   { label: 'はじめての方へ', href: '/first' },
-  { label: 'サービス', href: '/services' },
-  { label: '住宅改修', href: '/renovation' },
+  { label: 'サービス', href: '/services', children: serviceChildren },
   { label: 'よくある質問', href: '/faq' },
   { label: '会社について', href: '/about' },
   { label: '採用情報', href: '/recruit' },
@@ -44,14 +56,41 @@ const currentPath = Astro.url.pathname;
 
     <!-- PC ナビゲーション -->
     <nav class="nav-desktop" aria-label="メインナビゲーション">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class:list={['nav-link', { active: currentPath === item.href }]}
-        >
-          {item.label}
-        </a>
-      ))}
+      {navItems.map((item) =>
+        item.children ? (
+          <div class="nav-dropdown">
+            <a
+              href={item.href}
+              class:list={['nav-link', 'has-dropdown', { active: currentPath.startsWith('/services') || currentPath.startsWith('/rental') || currentPath.startsWith('/sale') || currentPath.startsWith('/renovation') || currentPath.startsWith('/online-support') }]}
+            >
+              {item.label}
+              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href={item.href} class="dropdown-item dropdown-item-all">
+                サービス一覧
+              </a>
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class:list={['dropdown-item', { active: currentPath === child.href }]}
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: currentPath === item.href }]}
+          >
+            {item.label}
+          </a>
+        )
+      )}
     </nav>
 
     <!-- 電話 & お問い合わせ -->
@@ -91,12 +130,26 @@ const currentPath = Astro.url.pathname;
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <nav aria-label="モバイルナビゲーション">
       {navItems.map((item) => (
-        <a
-          href={item.href}
-          class:list={['mobile-nav-link', { active: currentPath === item.href }]}
-        >
-          {item.label}
-        </a>
+        <>
+          <a
+            href={item.href}
+            class:list={['mobile-nav-link', { active: currentPath === item.href }]}
+          >
+            {item.label}
+          </a>
+          {item.children && (
+            <div class="mobile-sub-links">
+              {item.children.map((child) => (
+                <a
+                  href={child.href}
+                  class:list={['mobile-sub-link', { active: currentPath === child.href }]}
+                >
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          )}
+        </>
       ))}
     </nav>
     <div class="mobile-menu-footer">
@@ -193,6 +246,83 @@ const currentPath = Astro.url.pathname;
   .nav-link.active {
     color: var(--color-primary);
     background: rgba(0, 32, 96, 0.05);
+  }
+
+  /* === Dropdown === */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .has-dropdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .dropdown-chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .nav-dropdown:hover .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 110;
+  }
+
+  .nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ホバー領域のギャップを埋める不可視ブリッジ */
+  .nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 8px;
+  }
+
+  .dropdown-item {
+    display: block;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--color-text-mid);
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    white-space: nowrap;
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item.active {
+    color: var(--color-primary);
+    background: rgba(0, 32, 96, 0.05);
+  }
+
+  .dropdown-item-all {
+    font-size: 12px;
+    color: var(--color-text-lt);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 4px;
+    padding-bottom: 10px;
   }
 
   /* === Header Right === */
@@ -332,6 +462,31 @@ const currentPath = Astro.url.pathname;
     background: rgba(0, 32, 96, 0.05);
   }
 
+  .mobile-sub-links {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+
+  .mobile-sub-link {
+    display: block;
+    font-size: 13px;
+    color: var(--color-text-lt);
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    border-left: 2px solid var(--color-border);
+  }
+
+  .mobile-sub-link:hover,
+  .mobile-sub-link.active {
+    color: var(--color-primary);
+    background: rgba(0, 32, 96, 0.05);
+    border-left-color: var(--color-accent);
+  }
+
   .mobile-menu-footer {
     margin-top: auto;
     padding-top: 24px;
@@ -403,7 +558,6 @@ const currentPath = Astro.url.pathname;
     document.body.style.overflow = isOpen ? '' : 'hidden';
   });
 
-  /* メニューリンククリックで閉じる */
   mobileMenu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       hamburger?.setAttribute('aria-expanded', 'false');
