@@ -1,22 +1,20 @@
 ---
 /**
  * お知らせセクション
- * M4（microCMS連携）で動的データに置き換え予定
+ * microCMSからニュースを取得（未設定時はダミーデータ）
  */
+import { getNewsList } from '../../lib/microcms';
 
-interface NewsItem {
-  date: string;
-  category: string;
-  title: string;
+const { contents: newsItems } = await getNewsList({ limit: 5, orders: '-publishedAt' });
+
+/** 日付フォーマット: 2025-02-01T00:00:00.000Z → 2025.02.01 */
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}.${m}.${day}`;
 }
-
-const newsItems: NewsItem[] = [
-  { date: '2025.02.01', category: 'お知らせ', title: '2025年度 介護保険制度改正に伴うレンタル価格改定のご案内' },
-  { date: '2025.01.15', category: 'イベント', title: '福祉用具展示会・無料相談会を開催します（2月22日）' },
-  { date: '2025.01.06', category: 'お知らせ', title: '新年明けましておめでとうございます。本年もよろしくお願いいたします。' },
-  { date: '2024.12.20', category: '採用', title: '福祉用具専門相談員 スタッフ募集中（正社員・パート）' },
-  { date: '2024.11.01', category: 'お知らせ', title: 'オンラインサポートシステム（OSS）をリニューアルしました' },
-];
 ---
 
 <section class="section news-section">
@@ -35,11 +33,11 @@ const newsItems: NewsItem[] = [
       </div>
       <div class="news-list fade-up">
         {newsItems.map((item) => (
-          <div class="news-item">
-            <time class="news-date">{item.date}</time>
+          <a href={`/news/${item.id}`} class="news-item">
+            <time class="news-date">{formatDate(item.publishedAt ?? item.createdAt)}</time>
             <span class="news-category">{item.category}</span>
             <p class="news-title">{item.title}</p>
-          </div>
+          </a>
         ))}
       </div>
     </div>

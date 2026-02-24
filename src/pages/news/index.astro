@@ -1,0 +1,123 @@
+---
+/**
+ * お知らせ一覧ページ
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNewsList } from '../../lib/microcms';
+
+const { contents: newsItems } = await getNewsList({ limit: 20, orders: '-publishedAt' });
+
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}.${m}.${day}`;
+}
+---
+
+<BaseLayout title="お知らせ | 株式会社後藤 福祉事業部 つなぐ">
+  <main class="page-news">
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">News</span>
+        <h1 class="page-title">お知らせ</h1>
+        <p class="page-desc">新着情報・イベント・サービスのご案内</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <div class="news-list">
+          {newsItems.map((item) => (
+            <a href={`/news/${item.id}`} class="news-item">
+              <time class="news-date">{formatDate(item.publishedAt ?? item.createdAt)}</time>
+              <span class="news-category">{item.category}</span>
+              <p class="news-title">{item.title}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 48px;
+    background: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .page-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .page-header :global(.section-label) {
+    color: var(--color-accent);
+  }
+
+  .news-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .news-item {
+    display: grid;
+    grid-template-columns: 100px 80px 1fr;
+    align-items: start;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: var(--transition-base);
+  }
+
+  .news-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .news-item:hover {
+    padding-left: 12px;
+    background: rgba(0, 32, 96, 0.02);
+  }
+
+  .news-date {
+    font-family: var(--font-serif);
+    font-size: 13px;
+    color: var(--color-text-lt);
+    font-style: italic;
+    padding-top: 2px;
+  }
+
+  .news-category {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: white;
+    background: var(--color-primary);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .news-title {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 100px 16px 36px; }
+
+    .news-item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>
