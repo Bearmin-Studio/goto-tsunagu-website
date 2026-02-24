@@ -9,16 +9,17 @@ import { getStaffList } from '../lib/microcms';
 const { contents: staffList } = await getStaffList({ orders: 'order' });
 
 const companyInfo = [
-  { label: '会社名', value: '株式会社後藤' },
+  { label: '会社名', value: '株式会社 後藤' },
   { label: '事業部名', value: '福祉事業部 つなぐ' },
-  { label: '代表取締役', value: '後藤 純' },
-  { label: '設立', value: '2020年' },
+  { label: '代表者', value: '代表取締役 後藤 純' },
+  { label: '設立日', value: '2020年2月21日' },
+  { label: '福祉事業部設立', value: '2020年4月1日' },
   { label: '所在地', value: '〒933-0857 富山県高岡市木津769-1' },
-  { label: '電話番号', value: '0766-50-1555' },
+  { label: '電話番号', value: '0766-75-8008' },
   { label: 'FAX', value: '0766-75-7687' },
-  { label: '営業時間', value: '平日 9:00〜17:00' },
-  { label: '事業内容', value: '福祉用具貸与 / 特定福祉用具販売 / 住宅改修 / オンラインサポート' },
-  { label: '対象エリア', value: '富山県呉西地区（高岡市・射水市・氷見市・砺波市・小矢部市・南砺市）を中心に対応' },
+  { label: '資本金', value: '300万円' },
+  { label: '事業内容', value: '福祉用具レンタル・販売・住宅改修' },
+  { label: '許可', value: '高度管理医療機器等販売許可（0203号）/ 古物商 第501230008560号' },
 ];
 ---
 
@@ -95,37 +96,6 @@ const companyInfo = [
         <span class="section-label">Staff</span>
         <h2 class="section-title">スタッフ紹介</h2>
         <p class="section-subtitle">資格を持つ専門スタッフがサポートします</p>
-
-        <div class="staff-features">
-          <div class="staff-feature">
-            <div class="sf-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z" />
-              </svg>
-            </div>
-            <h3>福祉用具専門相談員</h3>
-            <p>利用者様の身体状況や生活環境に合わせた最適な福祉用具をご提案。定期的なモニタリングも行います。</p>
-          </div>
-          <div class="staff-feature">
-            <div class="sf-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-              </svg>
-            </div>
-            <h3>福祉住環境コーディネーター</h3>
-            <p>住宅改修の専門知識を活かし、安全で快適な住環境づくりをサポートします。</p>
-          </div>
-          <div class="staff-feature">
-            <div class="sf-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
-            </div>
-            <h3>丁寧な対応</h3>
-            <p>「手すり一本」の小さなお困りごとから、複合的なお悩みまで親身に対応いたします。</p>
-          </div>
-        </div>
-
         {staffList.length > 0 && (
           <div class="staff-cards">
             {staffList.map((staff) => (

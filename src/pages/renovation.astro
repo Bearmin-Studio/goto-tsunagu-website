@@ -14,10 +14,11 @@ const targetWorks = [
 ];
 
 const flowSteps = [
-  { num: '1', title: 'ご相談・現地調査', desc: '専門スタッフがご自宅に伺い、現状を確認。改修箇所と方法をご提案します。（無料）' },
-  { num: '2', title: 'お見積り・申請', desc: 'お見積りを作成し、ケアマネジャーと連携して介護保険の事前申請を行います。' },
-  { num: '3', title: '施工', desc: 'お住まいの状況に配慮しながら、丁寧に施工いたします。' },
-  { num: '4', title: '完了・アフターフォロー', desc: '施工後の確認と申請書類提出をサポート。その後も不具合があればすぐ対応します。' },
+  { num: '1', title: '相談・お見積り', desc: '福祉用具専門相談員が無料でご相談・お見積りに対応いたします。' },
+  { num: '2', title: '事前申請', desc: '市町村への事前申請を行います。申請の代行も可能です。' },
+  { num: '3', title: '工事実施', desc: '工事費用は一旦全額をお支払いいただきます。' },
+  { num: '4', title: '完了書類提出', desc: '完了後の申請書類を市町村へ提出いたします。' },
+  { num: '5', title: '費用支給', desc: '申請後2〜3か月で、介護保険分が指定口座へ振り込まれます。' },
 ];
 ---
 
@@ -43,9 +44,12 @@ const flowSteps = [
         <div class="highlight-box">
           <h2>介護保険を使った住宅改修</h2>
           <p>
-            要介護（要支援）認定を受けた方は、介護保険を利用して住宅改修を行うことができます。
-            費用の上限は<strong>20万円</strong>（自己負担1〜3割）。
-            "つなぐ"では現地調査からお見積り、施工、申請手続きのサポートまでワンストップで対応します。
+            要介護認定で<strong>要支援1・2、要介護1〜5</strong>と認定された方が対象です。
+            20万円を上限に、介護保険から9割または8・7割が支給されます（自己負担は所得に応じて1〜3割）。
+          </p>
+          <p>
+            "つなぐ"では福祉住環境コーディネーター資格を持つ専門スタッフが、
+            現地調査からお見積り、施工、申請手続きのサポートまでワンストップで対応します。
           </p>
         </div>
       </div>
@@ -91,53 +95,6 @@ const flowSteps = [
       </div>
     </section>
 
-    <!-- 費用の目安 -->
-    <section class="section bg-white">
-      <div class="container narrow">
-        <span class="section-label">Cost</span>
-        <h2 class="section-title">費用の目安</h2>
-        <p class="section-subtitle">介護保険適用で自己負担を大幅に軽減</p>
-
-        <table class="cost-table">
-          <thead>
-            <tr>
-              <th>工事内容</th>
-              <th>費用目安</th>
-              <th>自己負担（1割）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>手すり取付け（1箇所）</td>
-              <td>2〜5万円</td>
-              <td>2,000〜5,000円</td>
-            </tr>
-            <tr>
-              <td>段差解消（1箇所）</td>
-              <td>3〜8万円</td>
-              <td>3,000〜8,000円</td>
-            </tr>
-            <tr>
-              <td>床材変更（1部屋）</td>
-              <td>5〜15万円</td>
-              <td>5,000〜15,000円</td>
-            </tr>
-            <tr>
-              <td>扉の取替え（1箇所）</td>
-              <td>5〜15万円</td>
-              <td>5,000〜15,000円</td>
-            </tr>
-            <tr>
-              <td>洋式便器への取替え</td>
-              <td>10〜20万円</td>
-              <td>10,000〜20,000円</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="cost-note">※ 上記は概算です。実際の費用は現地調査後にお見積りいたします。</p>
-      </div>
-    </section>
-
     <!-- CTA -->
     <section class="reno-cta">
       <div class="container">
@@ -150,7 +107,7 @@ const flowSteps = [
               <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
             </svg>
           </a>
-          <a href="tel:0766-50-1555" class="btn-cta-outline">0766-50-1555</a>
+          <a href="tel:0766-75-8008" class="btn-cta-outline">0766-75-8008</a>
         </div>
       </div>
     </section>
@@ -291,38 +248,6 @@ const flowSteps = [
     line-height: 1.8;
   }
 
-  /* === Cost Table === */
-  .cost-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 16px;
-  }
-
-  .cost-table th,
-  .cost-table td {
-    padding: 14px 16px;
-    font-size: 13px;
-    text-align: left;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .cost-table th {
-    background: var(--color-primary);
-    color: white;
-    font-weight: 500;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .cost-table td { color: var(--color-text-mid); }
-
-  .cost-table tbody tr:hover { background: var(--color-bg); }
-
-  .cost-note {
-    font-size: 12px;
-    color: var(--color-text-lt);
-  }
-
   /* === CTA === */
   .reno-cta {
     background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
@@ -385,8 +310,6 @@ const flowSteps = [
   @media (max-width: 640px) {
     .page-header { padding: 100px 16px 40px; }
     .highlight-box { padding: 24px 20px; }
-    .cost-table { font-size: 12px; }
-    .cost-table th, .cost-table td { padding: 10px 8px; }
     .cta-actions { flex-direction: column; align-items: stretch; }
     .btn-cta-white, .btn-cta-outline { justify-content: center; }
   }

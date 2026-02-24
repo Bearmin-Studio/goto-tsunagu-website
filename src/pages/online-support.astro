@@ -7,7 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="オンラインサポート | 株式会社後藤 福祉事業部 つなぐ"
-  description="遠方でも安心。ビデオ通話で福祉用具専門相談員が直接ご相談をお受けします。"
+  description="カメラを活用した遠隔サポート。退院前カンファレンスや遠隔での状況確認など、介護・福祉の現場をオンラインで支援します。"
 >
   <main>
     <div class="page-header">
@@ -15,99 +15,89 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span class="section-label">Online Support</span>
         <h1 class="page-title">オンラインサポート</h1>
         <p class="page-desc">
-          遠方でも安心。ビデオ通話で<br />
-          専門相談員が直接ご相談をお受けします。
+          カメラを活用した遠隔支援で、<br />
+          介護・福祉の現場をサポートします。
         </p>
       </div>
     </div>
 
-    <!-- こんな方におすすめ -->
+    <!-- 背景・概要 -->
     <section class="section">
       <div class="container narrow">
-        <h2 class="h2-center">こんな方におすすめです</h2>
-        <div class="recommend-grid">
-          <div class="recommend-card">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="recommend-icon" aria-hidden="true">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        <div class="info-box">
+          <h2>オンラインサポートシステム（OSS）とは</h2>
+          <p>
+            2020年、新型コロナウイルス感染症により今までにないスタイルとなりました。
+            密な関わりが大切な介護・福祉において<strong>「会わない」「触れない」</strong>は非常に大きな問題です。
+          </p>
+          <p>
+            "つなぐ"のオンラインサポートは、カメラを活用して遠隔からご利用者様の状況を確認・共有し、
+            介護に関わるすべての方をつなぐサービスです。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活用例 -->
+    <section class="section bg-white">
+      <div class="container narrow">
+        <span class="section-label">Use Case</span>
+        <h2 class="section-title">活用例</h2>
+        <p class="section-subtitle">退院前カンファレンスなどで活用されています</p>
+
+        <div class="usecase-card">
+          <div class="usecase-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
             </svg>
-            <h3>遠方にお住まいの方</h3>
-            <p>営業エリア外でも、オンラインでご相談が可能です。</p>
           </div>
-          <div class="recommend-card">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="recommend-icon" aria-hidden="true">
-              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
-            </svg>
-            <h3>遠方のご家族</h3>
-            <p>離れて暮らすご両親の介護について相談したい方。</p>
-          </div>
-          <div class="recommend-card">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" class="recommend-icon" aria-hidden="true">
-              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-            </svg>
-            <h3>来所が難しい方</h3>
-            <p>お体の状態やスケジュールの都合で外出が難しい方。</p>
+          <div>
+            <h3>退院前カンファレンス</h3>
+            <p>
+              病院のご利用者様のお部屋にカメラを設置（会議時のみ）し、カメラを通じてご利用者様の状況を共有。
+              介護支援スタッフがZoomなどの無料サービスを利用して、遠隔で状況確認・情報共有を行います。
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 利用の流れ -->
-    <section class="section bg-white">
+    <section class="section">
       <div class="container narrow">
-        <span class="section-label">How to Use</span>
-        <h2 class="section-title">オンラインサポートの流れ</h2>
-        <p class="section-subtitle">スマートフォン・タブレットから簡単に</p>
+        <span class="section-label">Flow</span>
+        <h2 class="section-title">ご利用の流れ</h2>
+        <p class="section-subtitle">お問い合わせから運用開始まで</p>
 
         <div class="oss-flow">
           <div class="oss-step">
             <div class="oss-step-num">1</div>
             <div>
-              <h3>お申し込み</h3>
-              <p>お電話またはお問い合わせフォームから「オンラインサポート希望」とお伝えください。日時を調整いたします。</p>
+              <h3>お問い合わせ・ご相談</h3>
+              <p>ご相談内容をお聞きし、用途・料金を記載した設計書を作成いたします。</p>
             </div>
           </div>
           <div class="oss-step">
             <div class="oss-step-num">2</div>
             <div>
-              <h3>接続準備</h3>
-              <p>ご予約日時前に、ビデオ通話の接続URLをメールまたはSMSでお送りします。タップするだけで接続できます。</p>
+              <h3>ご契約</h3>
+              <p>設計書の内容をご説明し、ご納得いただいたうえでご契約となります。</p>
             </div>
           </div>
           <div class="oss-step">
             <div class="oss-step-num">3</div>
             <div>
-              <h3>オンライン相談</h3>
-              <p>福祉用具専門相談員がビデオ通話でご相談に対応。画面共有で用具のカタログや使い方もご説明します。</p>
+              <h3>設置・動作確認</h3>
+              <p>カメラの設置と動作確認を行います。</p>
             </div>
           </div>
           <div class="oss-step">
             <div class="oss-step-num">4</div>
             <div>
-              <h3>ご提案・手配</h3>
-              <p>ご相談内容に基づき、最適な用具をご提案。必要に応じて訪問やお届けの手配を行います。</p>
+              <h3>サービス開始</h3>
+              <p>使い方をご説明した後、運用を開始します。</p>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- よくある質問 -->
-    <section class="section">
-      <div class="container narrow">
-        <h2 class="h2-center">よくあるご質問</h2>
-        <div class="mini-faq">
-          <details>
-            <summary>アプリのインストールは必要ですか？</summary>
-            <p>いいえ、ブラウザから直接接続できます。特別な準備は不要です。</p>
-          </details>
-          <details>
-            <summary>パソコンが必要ですか？</summary>
-            <p>スマートフォンやタブレットでもご利用いただけます。カメラとマイクが使える端末であればOKです。</p>
-          </details>
-          <details>
-            <summary>費用はかかりますか？</summary>
-            <p>オンラインサポート自体は無料です。通信費のみお客様ご負担となります。</p>
-          </details>
         </div>
       </div>
     </section>
@@ -115,14 +105,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- CTA -->
     <section class="oss-cta">
       <div class="container">
-        <h2>オンラインサポートを<br />試してみませんか？</h2>
-        <p>まずはお気軽にお電話・お問い合わせください。</p>
+        <h2>オンラインサポートについて<br />お気軽にご相談ください</h2>
+        <p>導入のご検討やご質問など、まずはお問い合わせください。</p>
         <div class="cta-actions">
           <a href="/contact" class="btn-cta-white">
-            オンラインサポートを申し込む
+            お問い合わせ
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
           </a>
-          <a href="tel:0766-50-1555" class="btn-cta-outline">0766-50-1555</a>
+          <a href="tel:0766-75-8008" class="btn-cta-outline">0766-75-8008</a>
         </div>
       </div>
     </section>
@@ -137,13 +127,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .bg-white { background: white; }
   .narrow { max-width: 800px; margin: 0 auto; }
 
-  .h2-center { font-family: var(--font-serif-jp); font-size: clamp(20px, 2.5vw, 28px); font-weight: 400; color: var(--color-primary); text-align: center; margin-bottom: 36px; }
+  .info-box { background: var(--color-accent-lt); border-left: 4px solid var(--color-accent); border-radius: var(--radius-md); padding: 32px 36px; }
+  .info-box h2 { font-family: var(--font-serif-jp); font-size: 20px; font-weight: 400; color: var(--color-primary); margin-bottom: 12px; }
+  .info-box p { font-size: 14px; color: var(--color-text-mid); line-height: 1.9; margin-bottom: 8px; }
+  .info-box p:last-child { margin-bottom: 0; }
 
-  .recommend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .recommend-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px 24px; text-align: center; }
-  .recommend-icon { color: var(--color-accent); margin-bottom: 16px; }
-  .recommend-card h3 { font-family: var(--font-serif-jp); font-size: 15px; font-weight: 400; color: var(--color-primary); margin-bottom: 8px; }
-  .recommend-card p { font-size: 13px; color: var(--color-text-mid); line-height: 1.7; }
+  .usecase-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+  }
+  .usecase-icon {
+    width: 52px; height: 52px;
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  .usecase-card h3 { font-family: var(--font-serif-jp); font-size: 16px; font-weight: 400; color: var(--color-primary); margin-bottom: 8px; }
+  .usecase-card p { font-size: 13px; color: var(--color-text-mid); line-height: 1.8; }
 
   .oss-flow { display: flex; flex-direction: column; }
   .oss-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--color-border); align-items: flex-start; }
@@ -151,14 +158,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .oss-step-num { width: 44px; height: 44px; background: var(--color-accent); color: white; border-radius: 50%; font-family: var(--font-serif); font-size: 18px; font-style: italic; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .oss-step h3 { font-family: var(--font-serif-jp); font-size: 15px; font-weight: 400; color: var(--color-primary); margin-bottom: 6px; }
   .oss-step p { font-size: 13px; color: var(--color-text-mid); line-height: 1.8; }
-
-  .mini-faq { display: flex; flex-direction: column; }
-  .mini-faq details { border-bottom: 1px solid var(--color-border); }
-  .mini-faq details:first-child { border-top: 1px solid var(--color-border); }
-  .mini-faq summary { padding: 18px 0; font-size: 14px; color: var(--color-text); cursor: pointer; list-style: none; }
-  .mini-faq summary::-webkit-details-marker { display: none; }
-  .mini-faq summary::marker { display: none; content: ''; }
-  .mini-faq p { font-size: 13px; color: var(--color-text-mid); line-height: 1.8; padding: 0 0 18px 16px; border-left: 2px solid var(--color-accent); margin-left: 4px; }
 
   .oss-cta { background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%); padding: 80px 32px; text-align: center; }
   .oss-cta h2 { font-family: var(--font-serif-jp); font-size: clamp(22px, 3vw, 32px); font-weight: 400; color: white; margin-bottom: 12px; line-height: 1.6; }
@@ -169,9 +168,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn-cta-outline { display: inline-flex; align-items: center; gap: 10px; border: 2px solid rgba(255, 255, 255, 0.4); color: white; padding: 14px 36px; border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition-base); }
   .btn-cta-outline:hover { border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
 
-  @media (max-width: 768px) { .recommend-grid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) {
     .page-header { padding: 100px 16px 40px; }
+    .info-box { padding: 24px 20px; }
+    .usecase-card { flex-direction: column; }
     .oss-step { flex-direction: column; gap: 12px; }
     .cta-actions { flex-direction: column; align-items: stretch; }
     .btn-cta-white, .btn-cta-outline { justify-content: center; }

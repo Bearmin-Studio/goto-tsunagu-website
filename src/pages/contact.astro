@@ -27,8 +27,8 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
     <section class="section">
       <div class="container narrow">
         <div class="tel-box">
-          <p class="tel-label">お急ぎの方はお電話ください</p>
-          <a href="tel:0766-50-1555" class="tel-number">0766-50-1555</a>
+          <p class="tel-label">お気軽にお電話ください。</p>
+          <a href="tel:0766-75-8008" class="tel-number">0766-75-8008</a>
           <p class="tel-hours">受付時間：月〜金 8:30〜17:30（土日祝休み）</p>
         </div>
       </div>
@@ -59,35 +59,45 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
           </div>
 
           <div class="form-group">
-            <label for="kana" class="form-label">
-              フリガナ
+            <label for="company" class="form-label">
+              会社名
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="例：株式会社後藤"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address" class="form-label">
+              ご住所
               <span class="required">必須</span>
             </label>
             <input
               type="text"
-              id="kana"
-              name="kana"
+              id="address"
+              name="address"
               required
-              placeholder="例：ゴトウ タロウ"
+              placeholder="例：富山県高岡市木津769-1"
               class="form-input"
             />
-            <p class="form-error" data-error="kana">フリガナを入力してください</p>
+            <p class="form-error" data-error="address">ご住所を入力してください</p>
           </div>
 
           <div class="form-group">
             <label for="tel" class="form-label">
               電話番号
-              <span class="required">必須</span>
             </label>
             <input
               type="tel"
               id="tel"
               name="tel"
-              required
-              placeholder="例：0766-50-1555"
+              placeholder="例：0766-75-8008"
               class="form-input"
             />
-            <p class="form-error" data-error="tel">電話番号を入力してください</p>
           </div>
 
           <div class="form-group">
@@ -114,10 +124,9 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
             <select id="category" name="category" required class="form-select">
               <option value="" disabled selected>選択してください</option>
               <option value="レンタル">レンタル</option>
-              <option value="販売">販売</option>
+              <option value="購入">購入</option>
               <option value="住宅改修">住宅改修</option>
-              <option value="オンラインサポート">オンラインサポート</option>
-              <option value="採用について">採用について</option>
+              <option value="オンラインサポートシステム">オンラインサポートシステム</option>
               <option value="その他">その他</option>
             </select>
             <p class="form-error" data-error="category">種別を選択してください</p>
