@@ -149,10 +149,14 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
           </div>
 
           <div class="form-privacy">
-            <p>
-              送信いただいた個人情報は、お問い合わせへの対応のみに使用し、
-              第三者への提供は行いません。
-            </p>
+            <label class="privacy-check">
+              <input type="checkbox" id="privacy" name="privacy" required />
+              <span class="privacy-text">
+                <a href="/privacy" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a>に同意する
+                <span class="required">必須</span>
+              </span>
+            </label>
+            <p class="form-error" data-error="privacy">プライバシーポリシーへの同意が必要です</p>
           </div>
 
           <button type="submit" class="btn-submit">
@@ -170,6 +174,25 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
 <script>
   const form = document.querySelector('.contact-form') as HTMLFormElement;
 
+  const privacyCheckbox = form.querySelector<HTMLInputElement>('#privacy')!;
+
+  function validateField(field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): boolean {
+    const errorEl = form.querySelector(`[data-error="${field.name}"]`);
+    const isCheckbox = field.type === 'checkbox';
+    const invalid = isCheckbox
+      ? !(field as HTMLInputElement).checked
+      : !field.value.trim() || !field.checkValidity();
+
+    if (invalid) {
+      field.classList.add('is-invalid');
+      errorEl?.classList.add('is-visible');
+      return false;
+    }
+    field.classList.remove('is-invalid');
+    errorEl?.classList.remove('is-visible');
+    return true;
+  }
+
   form.addEventListener('submit', (e) => {
     let isValid = true;
     const fields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
@@ -177,15 +200,7 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
     );
 
     fields.forEach((field) => {
-      const errorEl = form.querySelector(`[data-error="${field.name}"]`);
-      if (!field.value.trim() || !field.checkValidity()) {
-        field.classList.add('is-invalid');
-        errorEl?.classList.add('is-visible');
-        isValid = false;
-      } else {
-        field.classList.remove('is-invalid');
-        errorEl?.classList.remove('is-visible');
-      }
+      if (!validateField(field)) isValid = false;
     });
 
     if (!isValid) {
@@ -199,16 +214,8 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
   form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
     '[required]'
   ).forEach((field) => {
-    field.addEventListener('blur', () => {
-      const errorEl = form.querySelector(`[data-error="${field.name}"]`);
-      if (!field.value.trim() || !field.checkValidity()) {
-        field.classList.add('is-invalid');
-        errorEl?.classList.add('is-visible');
-      } else {
-        field.classList.remove('is-invalid');
-        errorEl?.classList.remove('is-visible');
-      }
-    });
+    const event = field.type === 'checkbox' ? 'change' : 'blur';
+    field.addEventListener(event, () => validateField(field));
   });
 </script>
 
@@ -312,7 +319,43 @@ const formAction = import.meta.env.PUBLIC_SSGFORM_URL || '#';
     padding: 16px 20px;
     margin-bottom: 32px;
   }
-  .form-privacy p { font-size: 12px; color: var(--color-text-lt); line-height: 1.8; }
+
+  .privacy-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .privacy-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .privacy-check input[type="checkbox"].is-invalid {
+    outline: 2px solid #c0392b;
+    outline-offset: 1px;
+  }
+
+  .privacy-text {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .privacy-text a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .privacy-text a:hover {
+    color: var(--color-primary);
+  }
 
   .btn-submit {
     display: inline-flex;

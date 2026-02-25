@@ -11,8 +11,6 @@ export interface News extends MicroCMSContentId, MicroCMSDate {
   title: string;
   category: NewsCategory;
   content: string;
-  thumbnail?: MicroCMSImage;
-  excerpt?: string;
 }
 
 export type NewsCategory = 'お知らせ' | 'イベント' | '採用' | 'メディア';
@@ -31,17 +29,6 @@ export interface Service extends MicroCMSContentId, MicroCMSDate {
 }
 
 /* ===========================
-   よくある質問 (faq)
-   API型: リスト形式
-=========================== */
-export interface Faq extends MicroCMSContentId, MicroCMSDate {
-  question: string;
-  answer: string;
-  category?: string;
-  order: number;
-}
-
-/* ===========================
    スタッフ (staff)
    API型: リスト形式
 =========================== */
@@ -50,7 +37,47 @@ export interface Staff extends MicroCMSContentId, MicroCMSDate {
   role: string;
   photo?: MicroCMSImage;
   message?: string;
-  qualifications?: string;
   order: number;
+}
+
+/* ===========================
+   レンタル用具カテゴリ (rental-category)
+   API型: リスト形式
+=========================== */
+export interface RentalCategory extends MicroCMSContentId, MicroCMSDate {
+  name: string;
+  desc: string;
+  content?: string;
+  image?: MicroCMSImage;
+  slug: string;
+  order: number;
+}
+
+/* ===========================
+   販売品目 (sale-item)
+   API型: リスト形式
+=========================== */
+export interface SaleItem extends MicroCMSContentId, MicroCMSDate {
+  name: string;
+  desc: string;
+  content?: string;
+  image?: MicroCMSImage;
+  slug: string;
+  order: number;
+}
+
+/* ===========================
+   募集要項 (recruit)
+   API型: オブジェクト形式
+=========================== */
+export interface Recruit extends MicroCMSDate {
+  position: string;
+  employmentType: string;
+  location: string;
+  hours: string;
+  holidays: string;
+  salary: string;
+  requirements: string;
+  benefits: string;
 }
 

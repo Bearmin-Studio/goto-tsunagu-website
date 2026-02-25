@@ -26,10 +26,9 @@ const services: ServiceCard[] = [
     title: '福祉用具レンタル',
     desc: '車いす・特殊寝台・手すりなど13種の福祉用具をレンタルでご提供。介護保険が適用でき、月々わずかな負担でご利用いただけます。専門相談員が最適な用具をご提案いたします。',
     linkText: 'レンタル一覧を見る',
-    imgSrc: 'https://goto-t.co.jp/images/cat1.png',
+    imgSrc: '/images/outline/img1.jpg',
     imgAlt: '福祉用具レンタル',
     featured: true,
-    contain: true,
     iconPath: 'M20 10V7l-2-2H9L7 7v3H5v2h16v-2h-2zm-10-.5V7.5l.5-.5h3l.5.5v2h-4zM19 19H5v-5h14v5z',
   },
   {
@@ -39,9 +38,9 @@ const services: ServiceCard[] = [
     title: '福祉用具販売',
     desc: '入浴補助用具・腰掛け便座など、購入が適した用具を取り扱っています。',
     linkText: '販売品目を見る',
-    imgSrc: 'https://goto-t.co.jp/images/cat10.png',
+    imgSrc: '/images/outline/img2.jpg',
     imgAlt: '福祉用具販売',
-    contain: true,
+    featured: true,
     iconPath: 'M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z',
   },
   {
@@ -51,7 +50,7 @@ const services: ServiceCard[] = [
     title: '住宅改修',
     desc: '手すり設置・段差解消など、介護保険で最大20万円まで補助。専門スタッフが現地調査から施工まで対応します。',
     linkText: '住宅改修について',
-    imgSrc: 'https://goto-t.co.jp/images/renovation/syain-1.png',
+    imgSrc: '/images/renovation/syain-1.png',
     imgAlt: '住宅改修 専門スタッフ',
     iconPath: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
   },
@@ -62,7 +61,7 @@ const services: ServiceCard[] = [
     title: 'オンラインサポート',
     desc: '遠方でも安心。ビデオ通話で専門相談員が直接ご相談をお受けします。',
     linkText: 'OSSを利用する',
-    imgSrc: 'https://goto-t.co.jp/images/support/mimamori.png',
+    imgSrc: '/images/outline/item001.png',
     imgAlt: 'オンラインサポート',
     iconPath: 'M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zm-8-3c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z',
   },
@@ -233,8 +232,8 @@ const services: ServiceCard[] = [
     .service-card-imgbox,
     .service-card.featured .service-card-imgbox {
       width: 100%;
-      min-height: 160px;
-      max-height: 200px;
+      min-height: 200px;
+      max-height: 250px;
     }
 
     .service-card-body { padding: 20px 24px; }

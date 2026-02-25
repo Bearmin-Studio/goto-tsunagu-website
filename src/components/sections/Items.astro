@@ -2,25 +2,16 @@
 /**
  * レンタル用具カテゴリ グリッドセクション
  */
+import { getRentalCategoryList } from '../../lib/microcms';
 
-interface ItemCategory {
-  href: string;
-  imgSrc: string;
-  imgAlt: string;
-  name: string;
-}
+const { contents: categories } = await getRentalCategoryList({ orders: 'order' });
 
-const items: ItemCategory[] = [
-  { href: '/rental/wheelchair', imgSrc: 'https://goto-t.co.jp/images/cat1.png', imgAlt: '車いす', name: '車いす・付属品' },
-  { href: '/rental/bed', imgSrc: 'https://goto-t.co.jp/images/cat2.png', imgAlt: '特殊寝台', name: '特殊寝台・付属品' },
-  { href: '/rental/bedsore', imgSrc: 'https://goto-t.co.jp/images/cat3.png', imgAlt: '床ずれ防止', name: '床ずれ防止・体位変換器' },
-  { href: '/rental/sensor', imgSrc: 'https://goto-t.co.jp/images/cat4.png', imgAlt: '徘徊感知機器', name: '徘徊感知機器' },
-  { href: '/rental/lift', imgSrc: 'https://goto-t.co.jp/images/cat5.png', imgAlt: '移動用リフト', name: '移動用リフト' },
-  { href: '/rental/handrail', imgSrc: 'https://goto-t.co.jp/images/cat6.png', imgAlt: '手すり', name: '手すり' },
-  { href: '/rental/slope', imgSrc: 'https://goto-t.co.jp/images/cat7.png', imgAlt: 'スロープ', name: 'スロープ' },
-  { href: '/rental/walker', imgSrc: 'https://goto-t.co.jp/images/cat8.png', imgAlt: '歩行器', name: '歩行器・補助杖' },
-  { href: '/rental/excretion', imgSrc: 'https://goto-t.co.jp/images/cat9.png', imgAlt: '自動排泄処理装置', name: '自動排泄処理装置' },
-];
+const items = categories.map((cat) => ({
+  href: `/rental/${cat.slug}`,
+  imgSrc: cat.image?.url ?? '/images/cat/cat1.png',
+  imgAlt: cat.name,
+  name: cat.name,
+}));
 ---
 
 <section class="section items-section">
@@ -45,12 +36,6 @@ const items: ItemCategory[] = [
           <p class="item-card-name">{item.name}</p>
         </a>
       ))}
-      <a href="/rental" class="item-card more fade-up">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-        </svg>
-        <p class="item-card-name">すべての用具を見る</p>
-      </a>
     </div>
   </div>
 </section>

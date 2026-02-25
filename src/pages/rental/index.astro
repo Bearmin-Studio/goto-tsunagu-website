@@ -1,0 +1,159 @@
+---
+/**
+ * 福祉用具レンタル一覧ページ
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRentalCategoryList } from '../../lib/microcms';
+
+const { contents: rentalCategories } = await getRentalCategoryList({ orders: 'order' });
+
+const categories = rentalCategories.map((cat) => ({
+  href: `/rental/${cat.slug}`,
+  imgSrc: cat.image?.url ?? '/images/cat/cat1.png',
+  imgAlt: cat.name,
+  name: cat.name,
+  desc: cat.desc,
+}));
+---
+
+<BaseLayout
+  title="福祉用具レンタル | 株式会社後藤 福祉事業部 つなぐ"
+  description="車いす・特殊寝台・手すりなど13種の福祉用具をレンタル。介護保険適用で月々わずかな自己負担でご利用いただけます。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Rental</span>
+        <h1 class="page-title">福祉用具レンタル</h1>
+        <p class="page-desc">
+          介護保険適用で自己負担1〜3割。<br />
+          専門相談員が最適な用具をご提案します。
+        </p>
+      </div>
+    </div>
+
+    <!-- 介護保険について -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="info-box">
+          <h2>介護保険でのレンタルについて</h2>
+          <p>
+            要介護2以上の認定を受けた方は、介護保険を利用して福祉用具をレンタルできます。
+            自己負担は<strong>月額の1〜3割</strong>。例えば、月額10,000円の車いすなら
+            <strong>1割負担で月々1,000円</strong>からご利用いただけます。
+          </p>
+          <p class="info-note">
+            ※ 要支援1〜2、要介護1の方は一部対象外の品目があります。詳しくはご相談ください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- カテゴリ一覧 -->
+    <section class="section bg-white">
+      <div class="container">
+        <span class="section-label">Categories</span>
+        <h2 class="section-title">レンタル用具カテゴリ</h2>
+        <p class="section-subtitle">お体の状態に合わせてお選びいただけます</p>
+
+        <div class="cat-grid">
+          {categories.map((cat) => (
+            <a href={cat.href} class="cat-card">
+              <div class="cat-card-img">
+                <img src={cat.imgSrc} alt={cat.imgAlt} loading="lazy" />
+              </div>
+              <div class="cat-card-body">
+                <h3>{cat.name}</h3>
+                <p>{cat.desc}</p>
+                <span class="cat-link">
+                  詳しく見る
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rental-cta">
+      <div class="container">
+        <h2>どの用具が合うかわからない方も<br />お気軽にご相談ください</h2>
+        <p>専門相談員がご自宅に伺い、最適な用具をご提案します。相談・お見積り無料。</p>
+        <a href="/contact" class="btn-cta-white">
+          無料相談・お問い合わせ
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 120px 32px 56px;
+    background: var(--color-primary);
+  }
+  .page-title { font-family: var(--font-serif); font-size: clamp(30px, 4vw, 48px); color: white; margin-bottom: 8px; }
+  .page-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.8; }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .bg-white { background: white; }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  .info-box {
+    background: var(--color-accent-lt);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 32px 36px;
+  }
+  .info-box h2 { font-family: var(--font-serif-jp); font-size: 20px; font-weight: 400; color: var(--color-primary); margin-bottom: 12px; }
+  .info-box p { font-size: 14px; color: var(--color-text-mid); line-height: 1.9; margin-bottom: 8px; }
+  .info-note { font-size: 12px; color: var(--color-text-lt); margin-bottom: 0; }
+
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .cat-card {
+    background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    overflow: hidden; transition: var(--transition-base);
+  }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-accent); }
+
+  .cat-card-img { background: white; height: 200px; overflow: hidden; }
+  .cat-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .cat-card-body { padding: 20px 24px; }
+  .cat-card-body h3 { font-family: var(--font-serif-jp); font-size: 16px; font-weight: 400; color: var(--color-primary); margin-bottom: 8px; }
+  .cat-card-body p { font-size: 12px; color: var(--color-text-mid); line-height: 1.7; margin-bottom: 12px; }
+
+  .cat-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; color: var(--color-accent); font-weight: 500; transition: var(--transition-base);
+  }
+  .cat-card:hover .cat-link { gap: 8px; }
+
+  .rental-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px; text-align: center;
+  }
+  .rental-cta h2 { font-family: var(--font-serif-jp); font-size: clamp(20px, 2.5vw, 28px); font-weight: 400; color: white; margin-bottom: 12px; line-height: 1.6; }
+  .rental-cta p { font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 32px; }
+  .btn-cta-white {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: var(--color-primary); padding: 16px 36px;
+    border-radius: var(--radius-sm); font-size: 14px; font-weight: 500;
+    transition: var(--transition-base); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+
+  @media (max-width: 768px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .info-box { padding: 24px 20px; }
+  }
+</style>

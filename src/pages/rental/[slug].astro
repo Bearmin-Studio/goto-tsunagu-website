@@ -1,0 +1,306 @@
+---
+/**
+ * レンタル用具カテゴリ詳細ページ
+ * SSG: getStaticPathsで全カテゴリのパスを生成
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRentalCategoryList, getRentalCategoryBySlug } from '../../lib/microcms';
+
+export async function getStaticPaths() {
+  const { contents } = await getRentalCategoryList({ limit: 100, fields: 'slug' });
+  return contents.map((cat) => ({
+    params: { slug: cat.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const category = await getRentalCategoryBySlug(slug as string);
+
+const imgSrc = category.image?.url ?? '/images/cat/cat1.png';
+---
+
+<BaseLayout
+  title={`${category.name} | 福祉用具レンタル | 株式会社後藤 福祉事業部 つなぐ`}
+  description={category.desc}
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <a href="/rental" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+          </svg>
+          レンタル用具一覧へ
+        </a>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container detail-container">
+        <div class="detail-img">
+          <img src={imgSrc} alt={category.name} />
+        </div>
+        <div class="detail-body">
+          <span class="section-label">Rental</span>
+          <h1 class="detail-title">{category.name}</h1>
+          <p class="detail-desc">{category.desc}</p>
+          {category.content && (
+            <div class="detail-content" set:html={category.content} />
+          )}
+          <div class="detail-insurance">
+            <h2>介護保険適用</h2>
+            <p>
+              要介護2以上の認定を受けた方は、介護保険を利用してレンタルできます。
+              自己負担は<strong>月額の1〜3割</strong>です。
+            </p>
+            <p class="insurance-note">
+              ※ 要支援1〜2、要介護1の方は対象外となる場合があります。詳しくはご相談ください。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="detail-cta">
+      <div class="container">
+        <h2>{category.name}のご相談は<br />お気軽にお問い合わせください</h2>
+        <p>専門相談員がご自宅に伺い、最適な用具をご提案します。相談・お見積り無料。</p>
+        <div class="cta-actions">
+          <a href="/contact" class="btn-cta-white">
+            無料相談・お問い合わせ
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+            </svg>
+          </a>
+          <a href="/rental" class="btn-cta-outline">
+            レンタル用具一覧へ
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding: 96px 32px 24px;
+    background: var(--color-bg2);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--color-text-lt);
+    transition: var(--transition-base);
+  }
+
+  .back-link:hover { color: var(--color-primary); }
+
+  .detail-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .detail-img {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-img img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+  }
+
+  .detail-title {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .detail-desc {
+    font-size: 15px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .detail-content {
+    font-size: 15px;
+    color: var(--color-text-mid);
+    line-height: 2.0;
+    margin-bottom: 32px;
+  }
+
+  .detail-content :global(p) { margin-bottom: 1.5em; }
+
+  .detail-content :global(h2) {
+    font-family: var(--font-serif-jp);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin: 2em 0 1em;
+    padding-left: 16px;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .detail-content :global(h3) {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin: 1.5em 0 0.8em;
+  }
+
+  .detail-content :global(ul),
+  .detail-content :global(ol) {
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  .detail-content :global(li) { margin-bottom: 0.5em; }
+
+  .detail-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: 1.5em 0;
+  }
+
+  .detail-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+  }
+
+  .detail-content :global(th),
+  .detail-content :global(td) {
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .detail-content :global(th) {
+    background: var(--color-bg2);
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .detail-insurance {
+    background: var(--color-accent-lt);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+  }
+
+  .detail-insurance h2 {
+    font-family: var(--font-serif-jp);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .detail-insurance p {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.8;
+    margin-bottom: 4px;
+  }
+
+  .insurance-note {
+    font-size: 12px;
+    color: var(--color-text-lt);
+    margin-bottom: 0;
+  }
+
+  /* === CTA === */
+  .detail-cta {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #001850 100%);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .detail-cta h2 {
+    font-family: var(--font-serif-jp);
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 400;
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .detail-cta p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    color: var(--color-primary);
+    padding: 16px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
+
+  .btn-cta-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 14px 36px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition-base);
+  }
+
+  .btn-cta-outline:hover { border-color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
+
+  /* === Responsive === */
+  @media (max-width: 768px) {
+    .detail-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .detail-img { max-width: 280px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 88px 16px 20px; }
+    .detail-insurance { padding: 20px; }
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .btn-cta-white, .btn-cta-outline { justify-content: center; }
+  }
+</style>

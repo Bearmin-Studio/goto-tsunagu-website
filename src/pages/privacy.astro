@@ -1,0 +1,163 @@
+---
+/**
+ * プライバシーポリシーページ
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="プライバシーポリシー | 株式会社後藤 福祉事業部 つなぐ"
+  description="株式会社後藤 福祉事業部つなぐのプライバシーポリシーです。個人情報の取り扱いについてご説明します。"
+>
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <span class="section-label">Privacy Policy</span>
+        <h1 class="page-title">プライバシーポリシー</h1>
+      </div>
+    </div>
+
+    <section class="section bg-white">
+      <div class="container narrow">
+        <p class="policy-lead">
+          株式会社後藤 福祉事業部 つなぐ（以下「当社」といいます）は、お客様の個人情報の保護を重要な責務と認識し、以下のとおりプライバシーポリシーを定め、適切な管理・保護に努めます。
+        </p>
+
+        <div class="policy-section">
+          <h2>1. 個人情報の取得</h2>
+          <p>
+            当社は、サービスの提供にあたり、お名前・ご住所・電話番号・メールアドレス等の個人情報を、適正かつ公正な手段により取得いたします。
+          </p>
+        </div>
+
+        <div class="policy-section">
+          <h2>2. 利用目的</h2>
+          <p>取得した個人情報は、以下の目的で利用いたします。</p>
+          <ul>
+            <li>福祉用具のレンタル・販売・住宅改修に関するサービスの提供</li>
+            <li>お問い合わせへの対応・ご連絡</li>
+            <li>サービスの改善・新サービスの開発</li>
+            <li>法令に基づく対応</li>
+          </ul>
+        </div>
+
+        <div class="policy-section">
+          <h2>3. 第三者への提供</h2>
+          <p>
+            当社は、以下の場合を除き、お客様の個人情報を第三者に提供いたしません。
+          </p>
+          <ul>
+            <li>お客様の同意がある場合</li>
+            <li>法令に基づく場合</li>
+            <li>人の生命・身体または財産の保護のために必要であり、本人の同意を得ることが困難な場合</li>
+            <li>介護保険の申請等、サービス提供に必要な範囲で関係機関へ提供する場合</li>
+          </ul>
+        </div>
+
+        <div class="policy-section">
+          <h2>4. 個人情報の管理</h2>
+          <p>
+            当社は、個人情報の漏洩・滅失・毀損を防止するため、適切な安全管理措置を講じます。また、個人情報を取り扱う従業員に対して、適切な監督を行います。
+          </p>
+        </div>
+
+        <div class="policy-section">
+          <h2>5. 開示・訂正・削除の請求</h2>
+          <p>
+            お客様ご本人から、個人情報の開示・訂正・削除・利用停止等のご請求があった場合は、ご本人確認のうえ、速やかに対応いたします。
+          </p>
+        </div>
+
+        <div class="policy-section">
+          <h2>6. プライバシーポリシーの変更</h2>
+          <p>
+            当社は、法令の変更やサービス内容の変更等に伴い、本ポリシーを改定することがあります。変更後のポリシーは、当ウェブサイトに掲載した時点から効力を生じるものとします。
+          </p>
+        </div>
+
+        <div class="policy-section">
+          <h2>7. お問い合わせ先</h2>
+          <p>個人情報の取り扱いに関するお問い合わせは、下記までご連絡ください。</p>
+          <div class="contact-info">
+            <p><strong>株式会社後藤 福祉事業部 つなぐ</strong></p>
+            <p>電話：<a href="tel:0766-75-8008">0766-75-8008</a></p>
+            <p>受付時間：月〜金 8:30〜17:30（土日祝休み）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .page-header { padding: 120px 32px 56px; background: var(--color-primary); }
+  .page-title { font-family: var(--font-serif); font-size: clamp(30px, 4vw, 48px); color: white; margin-bottom: 8px; }
+  .page-header :global(.section-label) { color: var(--color-accent); }
+  .bg-white { background: white; }
+  .narrow { max-width: 800px; margin: 0 auto; }
+
+  .policy-lead {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 48px;
+  }
+
+  .policy-section {
+    margin-bottom: 40px;
+  }
+
+  .policy-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .policy-section h2 {
+    font-family: var(--font-serif-jp);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .policy-section p {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 8px;
+  }
+
+  .policy-section ul {
+    list-style: disc;
+    padding-left: 1.5em;
+    margin-top: 8px;
+  }
+
+  .policy-section li {
+    font-size: 14px;
+    color: var(--color-text-mid);
+    line-height: 1.9;
+    margin-bottom: 4px;
+  }
+
+  .contact-info {
+    background: var(--color-accent-lt);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    margin-top: 12px;
+  }
+
+  .contact-info p {
+    margin-bottom: 4px;
+  }
+
+  .contact-info a {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .page-header { padding: 100px 16px 40px; }
+  }
+</style>

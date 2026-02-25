@@ -3,16 +3,19 @@
  * 採用情報ページ
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRecruit } from '../lib/microcms';
+
+const recruit = await getRecruit();
 
 const jobDetails = [
-  { label: '職種', value: 'xxxx' },
-  { label: '雇用形態', value: 'xxxx' },
-  { label: '勤務地', value: 'xxxx' },
-  { label: '勤務時間', value: 'xxxx' },
-  { label: '休日', value: 'xxxx' },
-  { label: '給与', value: 'xxxx' },
-  { label: '資格', value: 'xxxx' },
-  { label: '福利厚生', value: 'xxxx' },
+  { label: '職種', value: recruit.position },
+  { label: '雇用形態', value: recruit.employmentType },
+  { label: '勤務地', value: recruit.location },
+  { label: '勤務時間', value: recruit.hours },
+  { label: '休日', value: recruit.holidays },
+  { label: '給与', value: recruit.salary },
+  { label: '資格', value: recruit.requirements },
+  { label: '福利厚生', value: recruit.benefits },
 ];
 ---
 

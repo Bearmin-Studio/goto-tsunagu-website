@@ -1,0 +1,122 @@
+---
+/**
+ * 販売品目 グリッドセクション
+ */
+import { getSaleItemList } from '../../lib/microcms';
+
+const { contents: saleItems } = await getSaleItemList({ orders: 'order' });
+
+const items = saleItems.map((item) => ({
+  href: `/sale/${item.slug || item.id}`,
+  name: item.name,
+  desc: item.desc,
+}));
+---
+
+<section class="section sale-items-section">
+  <div class="container">
+    <div class="sale-items-header">
+      <div>
+        <span class="section-label">Sale Items</span>
+        <h2 class="sale-items-title">販売品目</h2>
+      </div>
+      <a href="/sale" class="btn-see-all">
+        すべて見る
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="sale-items-grid">
+      {items.map((item) => (
+        <a href={item.href} class="sale-item-card fade-up">
+          <h3 class="sale-item-name">{item.name}</h3>
+          <div class="sale-item-desc" set:html={item.desc} />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sale-items-section { background: var(--color-bg); }
+
+  .sale-items-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+  }
+
+  .sale-items-title {
+    font-family: var(--font-serif);
+    font-size: clamp(20px, 2.5vw, 30px);
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  .sale-items-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .sale-item-card {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 24px 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    transition: var(--transition-base);
+    cursor: pointer;
+  }
+
+  .sale-item-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+  }
+
+  .sale-item-name {
+    font-family: var(--font-serif-jp);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  .sale-item-desc {
+    font-size: 13px;
+    color: var(--color-text-mid);
+    line-height: 1.7;
+  }
+
+  .sale-item-desc :global(p) { margin: 0; }
+
+  .btn-see-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-base);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .btn-see-all:hover { background: rgba(0, 32, 96, 0.05); }
+
+  /* === Responsive === */
+  @media (max-width: 1024px) {
+    .sale-items-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .sale-items-grid { grid-template-columns: 1fr; }
+    .sale-items-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>

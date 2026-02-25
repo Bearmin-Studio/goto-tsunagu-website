@@ -42,7 +42,7 @@ const companyInfo = [
         <div class="message-grid">
           <div class="message-img">
             <img
-              src="https://goto-t.co.jp/wp-content/uploads/2020/11/DSC1763.png"
+              src="/images/staff/DSC1763.png"
               alt="代表取締役 後藤純"
               loading="lazy"
               width="400"
@@ -54,17 +54,13 @@ const companyInfo = [
             <h2 class="section-title">代表メッセージ</h2>
             <p class="message-name">代表取締役　後藤　純</p>
             <p class="message-text">
-              株式会社後藤は2020年に創業いたしました。
-              高齢化社会が進む中、介護を必要とされるお客様の生活を支えるためには
-              周りのご家族様、福祉・医療関係者様との連携が不可欠と強く感じております。
-            </p>
-            <p class="message-text">
-              住み慣れたご自宅で、大切なご家族と過ごす時間を支えるために。
-              お客様一人ひとりの想いを丁寧に"つなぐ"サービスを心がけてまいります。
-            </p>
-            <p class="message-text">
-              「笑顔をつなげる、ありがとうをつなげる」── それが私たちの使命です。
-            </p>
+株式会社後藤は2020年に創業いたしました。<br />
+高齢化社会が進む中、介護を必要とされるお客様の生活を支えるためには周りのご家族様、福祉・医療関係者様との連携が不可欠と強く感じております。<br />
+​住み慣れたご自宅、一緒に時を過ごされたいご家族、福祉用具を利用することで、お客様の願いをより形にした生活を実現することができます。<br />
+​​お客様の想い、ご家族様の想い、施設関係者様の想いをつなげる人間味溢れたサービスを心掛けおひとりおひとりの人生に寄り添い、最善のサポートをいたします。<br />
+”笑顔をつなげる”<br />
+”ありがとうをつなげる”<br />
+地域の皆様に必要とされる会社を創造し続けてまいります。
           </div>
         </div>
       </div>
@@ -115,14 +111,6 @@ const companyInfo = [
                   <p class="staff-card-role">{staff.role}</p>
                   <h3 class="staff-card-name">{staff.name}</h3>
                   {staff.message && <p class="staff-card-msg">{staff.message}</p>}
-                  {staff.qualifications && (
-                    <p class="staff-card-qual">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z" />
-                      </svg>
-                      {staff.qualifications}
-                    </p>
-                  )}
                 </div>
               </div>
             ))}

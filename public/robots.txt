@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goto-t.co.jp/sitemap-index.xml
