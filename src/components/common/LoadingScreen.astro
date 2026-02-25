@@ -1,0 +1,80 @@
+---
+---
+
+<div id="loading-screen" aria-hidden="true">
+  <div class="loading-inner">
+    <img src="/images/common/logo.png" alt="" class="loading-logo" width="160" height="160" />
+  </div>
+</div>
+
+<style is:global>
+  /* head内の同期スクリプトがpaint前に付与するクラス → 一瞬のflashも防ぐ */
+  .skip-loading #loading-screen {
+    display: none !important;
+  }
+</style>
+
+<style>
+  #loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+
+  #loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loading-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loading-logo {
+    width: 120px;
+    height: auto;
+    animation: spin 1.4s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'loading_shown';
+  const MIN_DURATION = 1000;
+  const el = document.getElementById('loading-screen');
+
+  // 初回以外はすぐ削除
+  if (sessionStorage.getItem(STORAGE_KEY)) {
+    el?.remove();
+  } else {
+    sessionStorage.setItem(STORAGE_KEY, '1');
+
+    function hide() {
+      if (!el) return;
+      el.classList.add('hidden');
+      el.addEventListener('transitionend', () => el.remove(), { once: true });
+    }
+
+    const timerPromise = new Promise<void>(resolve => setTimeout(resolve, MIN_DURATION));
+    const loadPromise = new Promise<void>(resolve => {
+      if (document.readyState === 'complete') {
+        resolve();
+      } else {
+        window.addEventListener('load', () => resolve(), { once: true });
+      }
+    });
+
+    Promise.all([timerPromise, loadPromise]).then(hide);
+  }
+</script>
