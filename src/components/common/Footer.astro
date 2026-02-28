@@ -137,7 +137,9 @@ const currentYear = new Date().getFullYear();
   .footer-logo {
     height: 32px;
     width: auto;
-    filter: brightness(10) opacity(0.85);
+    /* brightness(0)で全ピクセルを黒→invert(1)で白に反転。iOS Safariでも確実に動作 */
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
     margin-bottom: 16px;
   }
 

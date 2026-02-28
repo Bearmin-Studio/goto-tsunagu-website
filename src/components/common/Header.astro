@@ -422,22 +422,40 @@ const currentPath = Astro.url.pathname;
 
   /* === Mobile Menu === */
   .mobile-menu {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 72px;
     left: 0;
     right: 0;
-    bottom: 0;
+    /* dvh: ブラウザUIを除いた実際の表示領域に追従（iOS Safari対応） */
+    height: calc(100vh - 72px);
+    height: calc(100dvh - 72px);
     background: rgba(245, 247, 250, 0.98);
     backdrop-filter: blur(14px);
-    padding: 24px 32px 32px;
+    padding: 24px 32px calc(32px + env(safe-area-inset-bottom));
     overflow-y: auto;
-    flex-direction: column;
     z-index: 99;
+    /* アニメーション用: 非表示状態 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0s 0.25s;
   }
 
   .mobile-menu[aria-hidden='false'] {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0s 0s;
   }
 
   .mobile-menu nav {
@@ -547,23 +565,56 @@ const currentPath = Astro.url.pathname;
 </style>
 
 <script>
-  const hamburger = document.querySelector('.hamburger');
+  const hamburger = document.querySelector<HTMLButtonElement>('.hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  hamburger?.addEventListener('click', () => {
-    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!isOpen));
-    hamburger.setAttribute('aria-label', isOpen ? 'メニューを開く' : 'メニューを閉じる');
-    mobileMenu?.setAttribute('aria-hidden', String(isOpen));
-    document.body.style.overflow = isOpen ? '' : 'hidden';
-  });
+  if (hamburger && mobileMenu) {
+    // ネスト関数内でも型が確定するようにローカル変数に代入
+    const btn = hamburger;
+    const menu = mobileMenu;
+    let savedScrollY = 0;
 
-  mobileMenu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      hamburger?.setAttribute('aria-expanded', 'false');
-      hamburger?.setAttribute('aria-label', 'メニューを開く');
-      mobileMenu.setAttribute('aria-hidden', 'true');
+    function openMenu(): void {
+      savedScrollY = window.scrollY;
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'メニューを閉じる');
+      menu.setAttribute('aria-hidden', 'false');
+      // iOS Safari でも背景スクロールを止める
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.width = '100%';
+    }
+
+    function closeMenu(): void {
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'メニューを開く');
+      menu.setAttribute('aria-hidden', 'true');
+      // スクロール位置を復元
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY);
+    }
+
+    btn.addEventListener('click', () => {
+      if (btn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
-  });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        btn.focus();
+      }
+    });
+  }
 </script>
